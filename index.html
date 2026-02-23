@@ -130,12 +130,14 @@
                 <span class="xl:hidden">123 456 7890</span>
             </div>
 
-            <ul class="flex items-center gap-4 lg:gap-8 text-[13px] font-bold text-gray-800 uppercase tracking-wide h-full">
+            <!-- Nav Items Container - This fixes the dropdown positioning issue -->
+            <div class="relative">
+                <ul class="flex items-center gap-4 lg:gap-8 text-[13px] font-bold text-gray-800 uppercase tracking-wide h-full">
                 <!-- HOME -->
                 <li class="group h-full flex items-center gap-1 hover:text-orange-800 cursor-pointer relative">
                     HOME <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
                     
-                    <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-xl transition-all duration-300 z-50 py-6 lg:py-10">
+                    <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 absolute top-full left-1/2 -translate-x-1/2 w-[400px] sm:w-[500px] md:w-[600px] lg:w-[700px] xl:w-[800px] bg-white border-b border-gray-200 shadow-xl transition-all duration-300 z-50 py-6 lg:py-10">
                         <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 lg:gap-6">
                             <div class="text-center group/item cursor-pointer">
                                 <div class="overflow-hidden rounded-md mb-2 lg:mb-3 aspect-square">
@@ -181,7 +183,7 @@
                 <li class="group h-full flex items-center gap-1 hover:text-orange-800 cursor-pointer relative">
                     SHOP <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
     
-                    <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-xl transition-all duration-300 z-50 py-6 lg:py-10">
+                    <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 absolute top-full left-1/2 -translate-x-1/2 w-[400px] sm:w-[500px] md:w-[600px] lg:w-[700px] xl:w-[800px] bg-white border-b border-gray-200 shadow-xl transition-all duration-300 z-50 py-6 lg:py-10">
                         <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-8">
                             <div class="space-y-3 lg:space-y-4">
                                 <h3 class="font-bold text-gray-900 border-b border-gray-100 pb-2 text-sm lg:text-base">Earrings</h3>
@@ -239,7 +241,7 @@
                 <li class="group h-full flex items-center gap-1 hover:text-orange-800 cursor-pointer relative">
                     PRODUCTS <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
                     
-                    <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-2xl transition-all duration-300 z-50 py-6 lg:py-10">
+                    <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 absolute top-full left-1/2 -translate-x-1/2 w-[400px] sm:w-[500px] md:w-[600px] lg:w-[700px] xl:w-[900px] bg-white border-b border-gray-200 shadow-2xl transition-all duration-300 z-50 py-6 lg:py-10">
                         <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-4">
                             <div class="lg:col-span-7 xl:col-span-6 grid grid-cols-2 sm:grid-cols-4 gap-3 lg:gap-4 lg:border-r border-gray-100 lg:pr-4 xl:pr-8">
                                 <div class="space-y-3 lg:space-y-4">
@@ -332,7 +334,7 @@
                 <li class="group relative h-full flex items-center gap-1 hover:text-orange-800 cursor-pointer text-xs lg:text-[13px]">
                     PAGES <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
                     
-                    <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 absolute top-full left-0 w-56 lg:w-64 bg-white shadow-xl transition-all duration-300 z-50 py-3 lg:py-4 border-t-2 border-orange-800">
+                    <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 absolute top-full left-1/2 -translate-x-1/2 w-56 lg:w-64 bg-white shadow-xl transition-all duration-300 z-[60] py-3 lg:py-4 border-t-2 border-orange-800">
                         <ul class="flex flex-col text-gray-700 font-normal normal-case text-sm">
                             <li class="group/sub relative px-4 lg:px-6 py-2 lg:py-3 hover:bg-gray-50 hover:text-orange-800 flex justify-between items-center transition-colors">
                                 <a href="#" class="w-full">About us</a>
@@ -372,6 +374,7 @@
                     </div>
                 </li>
             </ul>
+            </div>
 
             <a href="#" class="flex items-center gap-1 lg:gap-2 font-bold text-xs lg:text-sm text-gray-800 hover:text-orange-800 transition-colors uppercase">
                 <i data-lucide="home" class="w-4 lg:w-5 h-4 lg:h-5 text-orange-800"></i>
@@ -430,20 +433,6 @@
     <section class="relative w-full">
         <div class="swiper heroSwiper w-full">
             <div class="swiper-wrapper">
-                <!-- Slide 1 -->
-                <div class="swiper-slide hero-slide bg-cover bg-center flex items-center justify-center text-center px-3 sm:px-4"
-                     style="background-image: url('https://jelwo.myshopify.com/cdn/shop/files/jewelry-4-slider-1.jpg?v=1742540741&width=1920');">
-                    <div class="max-w-2xl mx-auto py-8 sm:py-12 lg:py-0">
-                        <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-4-slider-label.png?v=1742534520&width=352"
-                             class="w-16 sm:w-20 md:w-24 lg:w-28 mx-auto mb-3 sm:mb-4 md:mb-6" alt="Logo">
-                        <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-5xl xl:text-6xl font-serif text-gray-900 leading-tight sm:leading-tight lg:leading-none">
-                            Jewelry is our <span class="hidden sm:inline"><br></span> passion
-                        </h1>
-                        <button class="mt-4 sm:mt-6 md:mt-8 px-5 sm:px-6 md:px-10 py-2.5 sm:py-3 md:py-4 bg-[#a67c63] text-white rounded-full hover:bg-black transition duration-300 shadow-lg text-xs sm:text-sm md:text-base">
-                            SHOP NOW
-                        </button>
-                    </div>
-                </div>
                 <!-- Slide 2 -->
                 <div class="swiper-slide hero-slide bg-cover bg-center flex items-center justify-center text-center px-3 sm:px-4"
                      style="background-image: url('https://jelwo.myshopify.com/cdn/shop/files/jewelry-4-slider-3.jpg?v=1742541168&width=1920');">
@@ -1132,7 +1121,423 @@
             mobileMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
         });
-    </script>
 
+        // Mobile Search Toggle
+        const mobileSearchBtn = document.getElementById('mobile-search-btn');
+        const mobileSearchBar = document.getElementById('mobile-search-bar');
+        
+        mobileSearchBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileSearchBar.classList.toggle('hidden');
+        });
+
+        // Close mobile search when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileSearchBar.contains(e.target) && !mobileSearchBtn.contains(e.target)) {
+                mobileSearchBar.classList.add('hidden');
+            }
+        });
+
+        // Mobile Menu Sub-items Toggle
+        const mobileMenuItems = document.querySelectorAll('#mobile-menu .group');
+        
+        mobileMenuItems.forEach(item => {
+            const toggleBtn = item.querySelector('.cursor-pointer');
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const subMenu = item.querySelector('.submenu-content');
+                    const icon = toggleBtn.querySelector('i');
+                    
+                    // Close other open submenus
+                    mobileMenuItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            const otherSubMenu = otherItem.querySelector('.submenu-content');
+                            const otherIcon = otherItem.querySelector('.cursor-pointer i');
+                            if (otherSubMenu) {
+                                otherSubMenu.classList.add('hidden');
+                            }
+                            if (otherIcon) {
+                                otherIcon.classList.remove('rotate-180');
+                            }
+                        }
+                    });
+                    
+                    // Toggle current submenu
+                    if (subMenu) {
+                        subMenu.classList.toggle('hidden');
+                    }
+                    if (icon) {
+                        icon.classList.toggle('rotate-180');
+                    }
+                });
+            }
+        });
+        
+    </script>
+<!--reel section-->
+<style>
+    /* 1. Container Isolation */
+    #jewelry-marquee-section {
+        padding: 80px 0;
+        background-color: #ffffff;
+        overflow: hidden; /* Hides the scrollbar */
+    }
+
+    #jewelry-marquee-section .marquee-title {
+        font-family: 'Playfair Display', serif;
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: #1f2937;
+    }
+
+    /* 2. The Sliding Track */
+    .reels-viewport {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        cursor: grab;
+    }
+
+    .reels-flex-track {
+        display: flex;
+        gap: 20px;
+        will-change: transform;
+    }
+
+    /* 3. Card Styling */
+    .marquee-reel-card {
+        flex: 0 0 300px; /* Fixed width for cards */
+        height: 550px !important; /* Your specific height */
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        background: #f3f4f6;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 640px) {
+        .marquee-reel-card { flex: 0 0 260px; }
+    }
+
+    /* 4. Video & Content Layering */
+    .marquee-reel-card video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+
+    .marquee-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 16px;
+        z-index: 10;
+    }
+
+    .marquee-product-box {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        border-radius: 12px;
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .marquee-atc-btn {
+        width: 100%;
+        background-color: #a68269;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        padding: 16px;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .marquee-atc-btn:hover {
+        transform: scale(1.02);
+        background-color: #8e6b54;
+    }
+</style>
+
+<section id="jewelry-marquee-section">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="marquee-title">Watch & shop reels</h2>
+
+        <div class="reels-viewport" id="marqueeViewport">
+            <div class="reels-flex-track" id="marqueeTrack">
+                
+                <div class="marquee-reel-card">
+                    <video autoplay muted loop playsinline><source src="reel 1.mp4" type="video/mp4"></video>
+                    <div class="marquee-overlay">
+                        <div class="marquee-product-box">
+                            <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-product-56.jpg?width=100" class="w-12 h-12 rounded-lg object-contain">
+                            <div class="text-left">
+                                <h4 class="text-[11px] font-bold text-gray-800 uppercase leading-none mb-1">Chic diamond ring</h4>
+                                <p class="text-sm font-semibold text-gray-900">Rs. 22.00</p>
+                            </div>
+                        </div>
+                        <button class="marquee-atc-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="marquee-reel-card">
+                    <video autoplay muted loop playsinline><source src="reel 2.mp4" type="video/mp4"></video>
+                    <div class="marquee-overlay">
+                        <div class="marquee-product-box">
+                            <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-product-51.jpg?width=100" class="w-12 h-12 rounded-lg object-contain">
+                            <div class="text-left">
+                                <h4 class="text-[11px] font-bold text-gray-800 uppercase leading-none mb-1">Flower jhumka</h4>
+                                <p class="text-sm font-semibold text-gray-900">Rs. 18.00</p>
+                            </div>
+                        </div>
+                        <button class="marquee-atc-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="marquee-reel-card">
+                    <video autoplay muted loop playsinline><source src="reel 3.mp4" type="video/mp4"></video>
+                    <div class="marquee-overlay">
+                        <div class="marquee-product-box">
+                            <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-product-7.jpg?width=100" class="w-12 h-12 rounded-lg object-contain">
+                            <div class="text-left">
+                                <h4 class="text-[11px] font-bold text-gray-800 uppercase leading-none mb-1">Sherbi ring</h4>
+                                <p class="text-sm font-semibold text-gray-900">Rs. 26.00</p>
+                            </div>
+                        </div>
+                        <button class="marquee-atc-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="marquee-reel-card">
+                    <video autoplay muted loop playsinline><source src="reel 4.mp4" type="video/mp4"></video>
+                    <div class="marquee-overlay">
+                        <div class="marquee-product-box">
+                            <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-product-46.jpg?width=100" class="w-12 h-12 rounded-lg object-contain">
+                            <div class="text-left">
+                                <h4 class="text-[11px] font-bold text-gray-800 uppercase leading-none mb-1">Drop gold earrings</h4>
+                                <p class="text-sm font-semibold text-gray-900">Rs. 14.00</p>
+                            </div>
+                        </div>
+                        <button class="marquee-atc-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="marquee-reel-card">
+                    <video autoplay muted loop playsinline><source src="reel 5.mp4" type="video/mp4"></video>
+                    <div class="marquee-overlay">
+                        <div class="marquee-product-box">
+                            <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-product-1.jpg?width=100" class="w-12 h-12 rounded-lg object-contain">
+                            <div class="text-left">
+                                <h4 class="text-[11px] font-bold text-gray-800 uppercase leading-none mb-1">Flower pendant</h4>
+                                <p class="text-sm font-semibold text-gray-900">Rs. 22.00</p>
+                            </div>
+                        </div>
+                        <button class="marquee-atc-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="marquee-reel-card">
+                    <video autoplay muted loop playsinline><source src="reel 6.mp4" type="video/mp4"></video>
+                    <div class="marquee-overlay">
+                        <div class="marquee-product-box">
+                            <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-product-7.jpg?width=100" class="w-12 h-12 rounded-lg object-contain">
+                            <div class="text-left">
+                                <h4 class="text-[11px] font-bold text-gray-800 uppercase leading-none mb-1">Sherbi ring</h4>
+                                <p class="text-sm font-semibold text-gray-900">Rs. 26.00</p>
+                            </div>
+                        </div>
+                        <button class="marquee-atc-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    (function() {
+        const track = document.getElementById('marqueeTrack');
+        const viewport = document.getElementById('marqueeViewport');
+        
+        // Clone items for a seamless loop
+        const clones = track.innerHTML;
+        track.innerHTML += clones;
+
+        let currentX = 0;
+        let isPaused = false;
+        const scrollSpeed = 0.8; // Change this to make it faster or slower
+
+        function animate() {
+            if (!isPaused) {
+                currentX -= scrollSpeed;
+                
+                // If we've scrolled past the first set of items, reset to 0
+                if (Math.abs(currentX) >= track.scrollWidth / 2) {
+                    currentX = 0;
+                }
+                
+                track.style.transform = `translateX(${currentX}px)`;
+            }
+            requestAnimationFrame(animate);
+        }
+
+        // Pause on hover so people can click "Add to Cart"
+        viewport.addEventListener('mouseenter', () => isPaused = true);
+        viewport.addEventListener('mouseleave', () => isPaused = false);
+
+        // Handle Touch for Mobile
+        let startX = 0;
+        viewport.addEventListener('touchstart', (e) => {
+            isPaused = true;
+            startX = e.touches[0].pageX - currentX;
+        });
+
+        viewport.addEventListener('touchmove', (e) => {
+            currentX = e.touches[0].pageX - startX;
+            track.style.transform = `translateX(${currentX}px)`;
+        });
+
+        viewport.addEventListener('touchend', () => {
+            isPaused = false;
+        });
+
+        animate();
+    })();
+</script>
+<!--footer section-->
+<footer class="bg-[#fcf8f4] pt-20 pb-10 px-4 font-sans text-[#1f2937]">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            
+            <div>
+                <div class="mb-8">
+                    <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-4-logo.png?v=1744805986&width=352" alt="JELWO Logo" class="h-8 w-auto object-contain">
+                </div>
+                <ul class="space-y-4 text-[15px] text-gray-600">
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 mt-0.5 text-[#a68269]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <span>55 East 10th street, new york,<br>ny 10003, united states</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <svg class="w-5 h-5 text-[#a68269]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        <span>+ (220) 123 456 7890</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <svg class="w-5 h-5 text-[#a68269]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        <span>demo123546@gmail.com</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-bold text-[#a68269] mb-8">Information</h4>
+                <ul class="space-y-3 text-[15px] text-gray-600">
+                    <li><a href="#" class="hover:text-[#a68269] transition">About us</a></li>
+                    <li><a href="#" class="hover:text-[#a68269] transition">Contact us</a></li>
+                    <li><a href="#" class="hover:text-[#a68269] transition">Faq's</a></li>
+                    <li><a href="#" class="hover:text-[#a68269] transition">News</a></li>
+                </ul>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <h4 class="text-lg font-bold text-[#a68269] mb-8">Privacy & terms</h4>
+                    <ul class="space-y-3 text-[15px] text-gray-600">
+                        <li><a href="#" class="hover:text-[#a68269] transition">Privacy policy</a></li>
+                        <li><a href="#" class="hover:text-[#a68269] transition">Refund policy</a></li>
+                        <li><a href="#" class="hover:text-[#a68269] transition">Shipping & return</a></li>
+                        <li><a href="#" class="hover:text-[#a68269] transition">Terms & condition</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-[#a68269] mb-8">Category</h4>
+                    <ul class="space-y-3 text-[15px] text-gray-600">
+                        <li><a href="#" class="hover:text-[#a68269] transition">Rings</a></li>
+                        <li><a href="#" class="hover:text-[#a68269] transition">Earring</a></li>
+                        <li><a href="#" class="hover:text-[#a68269] transition">Pendant</a></li>
+                        <li><a href="#" class="hover:text-[#a68269] transition">Necklaces</a></li>
+                        <li><a href="#" class="hover:text-[#a68269] transition">Bracelets</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-bold text-[#a68269] mb-8">Visit store</h4>
+                <ul class="space-y-3 text-[15px] text-gray-600">
+                    <li>Mon - sat : 10am - 11pm</li>
+                    <li>Sun : 10am - 4pm</li>
+                    <li>7 Days a week</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-8 py-10 border-t border-gray-200">
+            <div class="flex gap-3">
+                <a href="#" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-[#a68269] hover:text-white transition text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+</svg>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-[#a68269] hover:text-white transition text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+  <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+</svg>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-[#a68269] hover:text-white transition text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+  <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+</svg>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-[#a68269] hover:text-white transition text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pinterest" viewBox="0 0 16 16">
+  <path d="M8 0a8 8 0 0 0-2.915 15.452c-.07-.633-.134-1.606.027-2.297.146-.625.938-3.977.938-3.977s-.239-.479-.239-1.187c0-1.113.645-1.943 1.448-1.943.682 0 1.012.512 1.012 1.127 0 .686-.437 1.712-.663 2.663-.188.796.4 1.446 1.185 1.446 1.422 0 2.515-1.5 2.515-3.664 0-1.915-1.377-3.254-3.342-3.254-2.276 0-3.612 1.707-3.612 3.471 0 .688.265 1.425.595 1.826a.24.24 0 0 1 .056.23c-.061.252-.196.796-.222.907-.035.146-.116.177-.268.107-1-.465-1.624-1.926-1.624-3.1 0-2.523 1.834-4.84 5.286-4.84 2.775 0 4.932 1.977 4.932 4.62 0 2.757-1.739 4.976-4.151 4.976-.811 0-1.573-.421-1.834-.919l-.498 1.902c-.181.695-.669 1.566-.995 2.097A8 8 0 1 0 8 0"/>
+</svg>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-[#a68269] hover:text-white transition text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
+  <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/>
+</svg>
+                </a>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-6 w-full lg:w-auto">
+                <p class="text-[#a68269] font-medium whitespace-nowrap">Subscribe and get 15% discount.</p>
+                <div class="relative w-full md:w-[450px]">
+                    <input type="email" placeholder="Enter your email" 
+                        class="w-full bg-[#f4ece4] border-none rounded-full py-4 px-8 outline-none placeholder:text-gray-500">
+                    <button class="absolute right-0 top-0 h-full px-10 bg-[#a68269] text-white rounded-full font-bold uppercase text-xs tracking-widest hover:bg-[#8e6b54] transition">
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-gray-200 gap-4">
+            <p class="text-sm text-gray-500 font-medium">Copyright © 2026 by spacingtech</p>
+            <div class="flex gap-2 opacity-80">
+                <img src="vis.png" class="h-6" alt="Visa">
+                <img src="american-express.png" class="h-6" alt="Mastercard">
+                <img src="pp.png" class="h-6" alt="Paypal">
+                <img src="amex.png" class="h-6" alt="Amex">
+                <img src="dis.png" class="h-6" alt="Discover">
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
