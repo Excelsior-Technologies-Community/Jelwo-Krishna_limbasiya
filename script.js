@@ -37,12 +37,19 @@ const mainJewelrySwiper = new Swiper('.main-jewelry-carousel', {
     autoplay: { delay: 5000, disableOnInteraction: false },
 });
 
-// 3. Category Swiper
+// 3. Category Swiper (Popular Category with Auto Slide)
 const categorySwiper = new Swiper(".categorySwiper", {
     slidesPerView: "auto",
     spaceBetween: 0,
     grabCursor: true,
     freeMode: true,
+    loop: true,
+    autoplay: {
+        delay: 3000,
+        disableOnInteraction: true,
+        pauseOnMouseEnter: true,
+    },
+    speed: 600,
 });
 
 // 4. Jewelry Product Section Swiper (RENAMED to jewelrySwiper)
@@ -116,4 +123,120 @@ function closeModal() {
     if (localStorage.getItem('hideNewsletter') === 'true') {
       document.getElementById('newsletter-modal').style.display = 'none';
     }
+  }
+
+  // JELWO Store Logic
+
+  // 1. Sync Quantities
+  function changeQty(val) {
+      const main = document.getElementById('qty');
+      const sticky = document.getElementById('stickyQty');
+      let current = parseInt(main.value);
+      current += val;
+      if (current < 1) current = 1;
+      main.value = current;
+      sticky.value = current;
+  }
+
+  // 2. Accordions
+  document.querySelectorAll('.acc-trigger').forEach(trigger => {
+      trigger.addEventListener('click', function() {
+          const content = this.nextElementSibling;
+          const icon = this.querySelector('i');
+          content.classList.toggle('hidden');
+          if (content.classList.contains('hidden')) {
+              icon.classList.replace('ri-subtract-line', 'ri-add-line');
+          } else {
+              icon.classList.replace('ri-add-line', 'ri-subtract-line');
+          }
+      });
+  });
+
+  // 3. Size Switcher
+  document.querySelectorAll('.size-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+          document.querySelectorAll('.size-btn').forEach(b => {
+              b.classList.remove('border-gray-800', 'text-gray-900', 'font-bold');
+              b.classList.add('border-gray-200', 'text-gray-400');
+          });
+          this.classList.replace('border-gray-200', 'border-gray-800');
+          this.classList.replace('text-gray-400', 'text-gray-900');
+          this.classList.add('font-bold');
+          document.getElementById('sizeVal').innerText = this.innerText;
+      });
+  });
+
+  // 4. Sticky Bar Behavior
+  window.addEventListener('scroll', () => {
+      const bar = document.getElementById('stickyBar');
+      const trigger = document.getElementById('buyBtnMain');
+      const pos = trigger.getBoundingClientRect().bottom + window.scrollY;
+      if (window.scrollY > pos) {
+          bar.classList.remove('translate-y-full');
+      } else {
+          bar.classList.add('translate-y-full');
+      }
+  });
+
+
+
+  document.addEventListener('DOMContentLoaded', startCountdown);
+
+  // JELWO Nav Dropdown Functionality
+  // Handle nav dropdowns for better compatibility
+  document.querySelectorAll('.group').forEach(group => {
+      // Find dropdown elements that are hidden by default and shown on group-hover
+      const dropdown = group.querySelector('[class*="hidden"][class*="group-hover"]');
+      if (dropdown) {
+          // Mouse enter/leave for desktop
+          group.addEventListener('mouseenter', () => {
+              dropdown.classList.remove('hidden');
+          });
+          group.addEventListener('mouseleave', () => {
+              dropdown.classList.add('hidden');
+          });
+          
+          // Click toggle for mobile/touch devices
+          const link = group.querySelector('a');
+          if (link) {
+              link.addEventListener('click', (e) => {
+                  if (window.innerWidth < 768) {
+                      e.preventDefault();
+                      dropdown.classList.toggle('hidden');
+                  }
+              });
+          }
+      }
+  });
+
+  // 6. Thumbnail Image Click Handler
+  // When clicking on small thumbnail images, update the main image
+  document.querySelectorAll('.thumb').forEach(thumb => {
+      thumb.addEventListener('click', function() {
+          const mainImg = document.getElementById('mainImg');
+          if (mainImg) {
+              mainImg.src = this.src;
+              // Reset zoom state when changing images
+              mainImg.style.transform = 'scale(1)';
+              mainImg.classList.remove('cursor-zoom-out');
+              mainImg.classList.add('cursor-zoom-in');
+          }
+      });
+  });
+
+  // 7. Image Zoom Functionality
+  // Click on main image to zoom in/out
+  const mainImg = document.getElementById('mainImg');
+  if (mainImg) {
+      mainImg.addEventListener('click', function() {
+          if (this.style.transform === 'scale(1.5)') {
+              this.style.transform = 'scale(1)';
+              this.classList.remove('cursor-zoom-out');
+              this.classList.add('cursor-zoom-in');
+          } else {
+              this.style.transform = 'scale(1.5)';
+              this.classList.remove('cursor-zoom-in');
+              this.classList.add('cursor-zoom-out');
+          }
+      });
   }
