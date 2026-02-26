@@ -30,14 +30,17 @@
             <div class="flex items-center justify-between py-4 space-x-4 lg:space-x-8">
 
                 <div class="flex items-center flex-shrink-0">
-                    <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-4-logo.png?v=1744805986&width=352"
-                        class="w-24 md:w-32" alt="Logo" />
+                    <a href="index.html">
+                        <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-4-logo.png?v=1744805986&width=352"
+                            class="w-24 md:w-32" alt="Logo" />
+                    </a>
                     <div
                         class="hidden lg:block border-l border-gray-200 ml-8 pl-8 text-sm text-gray-500 whitespace-nowrap">
                         Free UK standard delivery on all orders.
                     </div>
                 </div>
 
+                <!-- Search Bar (Desktop) -->
                 <div class="relative flex-1 max-w-md hidden md:block">
                     <input type="text" placeholder="Search product..."
                         class="w-full py-2 pl-4 pr-10 bg-gray-50 border border-gray-200 rounded-sm focus:outline-none focus:ring-1 focus:ring-amber-700" />
@@ -47,20 +50,95 @@
                 </div>
 
                 <div class="flex items-center space-x-4 md:space-x-6 text-gray-600">
-                    <button class="hover:text-amber-700 transition-colors">
+                    <button class="hidden sm:block hover:text-amber-700 transition-colors">
                         <i class="fa-regular fa-user text-lg md:text-xl"></i>
                     </button>
-                    <button class="flex items-center space-x-1 hover:text-amber-700 transition-colors">
+                    <!-- Search Icon (Mobile) -->
+                    <button id="search-toggle" class="md:hidden hover:text-amber-700 transition-colors">
+                        <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                    </button>
+                    <a href="wishlist.html" class="flex items-center space-x-1 hover:text-amber-700 transition-colors">
                         <i class="fa-regular fa-heart text-lg md:text-xl"></i>
-                        <span class="text-xs md:text-sm">(0)</span>
-                    </button>
-                    <button class="flex items-center space-x-1 hover:text-amber-700 transition-colors">
+                        <span class="text-xs md:text-sm wishlist-count">(0)</span>
+                    </a>
+                    <a href="cart.html" class="flex items-center space-x-1 hover:text-amber-700 transition-colors">
                         <i class="fa-solid fa-bag-shopping text-lg md:text-xl"></i>
-                        <span class="text-xs md:text-sm">(0)</span>
-                    </button>
-                    <button class="md:hidden text-gray-800">
+                        <span class="text-xs md:text-sm cart-count">(0)</span>
+                    </a>
+                    <button id="menu-toggle" class="md:hidden text-gray-800">
                         <i class="fa-solid fa-bars text-xl"></i>
                     </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Search Bar (Collapsible) -->
+        <div id="mobile-search" class="hidden md:hidden bg-white border-t border-gray-100 px-4 py-3">
+            <div class="relative">
+                <input type="text" placeholder="Search product..."
+                    class="w-full py-2 pl-4 pr-10 bg-gray-50 border border-gray-200 rounded-sm focus:outline-none focus:ring-1 focus:ring-amber-700" />
+                <button class="absolute right-3 top-2.5 text-gray-400">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Sidebar Menu Overlay -->
+        <div id="sidebar-overlay"
+            class="fixed inset-0 bg-black/50 z-[100] transition-opacity duration-300 opacity-0 pointer-events-none">
+        </div>
+        <!-- Mobile Sidebar Menu -->
+        <div id="mobile-sidebar"
+            class="fixed top-0 left-0 bottom-0 w-[300px] bg-white z-[101] transform -translate-x-full transition-transform duration-300 font-sans">
+            <div class="p-6 flex flex-col h-full">
+                <div class="flex items-center justify-between mb-10">
+                    <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-4-logo.png?v=1744805986&width=352"
+                        class="w-24" alt="Logo" />
+                    <button id="close-sidebar" class="text-gray-500 text-2xl">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <nav class="flex-1 overflow-y-auto">
+                    <ul class="space-y-6 text-sm font-semibold uppercase tracking-wider text-gray-800">
+                        <li>
+                            <div class="flex items-center justify-between group">
+                                <a href="index.html" class="py-2 hover:text-[#a77f66] transition-colors">Home</a>
+                                <button class="p-2"><i class="fa-solid fa-chevron-down text-[10px]"></i></button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex items-center justify-between group">
+                                <a href="#" class="py-2 hover:text-[#a77f66] transition-colors">Shop</a>
+                                <button class="p-2"><i class="fa-solid fa-chevron-down text-[10px]"></i></button>
+                            </div>
+                        </li>
+                        <li><a href="#" class="block py-2 hover:text-[#a77f66] transition-colors">Blog</a></li>
+                        <li>
+                            <div class="flex items-center justify-between group">
+                                <a href="#" class="py-2 hover:text-[#a77f66] transition-colors">Pages</a>
+                                <button class="p-2"><i class="fa-solid fa-chevron-down text-[10px]"></i></button>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="mt-10 pt-10 border-t border-gray-100">
+                        <div class="flex items-center space-x-3 text-gray-600 mb-6">
+                            <i class="fas fa-headphones text-[#a77f66]"></i>
+                            <span class="text-xs uppercase tracking-widest font-bold">(220) 123 456 7890</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-gray-600">
+                            <i class="fa-solid fa-house text-[#a77f66]"></i>
+                            <span class="text-xs uppercase tracking-widest font-bold">Free Try at Home</span>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="mt-auto pt-6 border-t border-gray-100 flex justify-center space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-amber-800"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-amber-800"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-amber-800"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-amber-800"><i class="fa-brands fa-pinterest"></i></a>
                 </div>
             </div>
         </div>
@@ -77,7 +155,7 @@
                 <nav class="relative flex items-center justify-center space-x-6 lg:space-x-10 h-12 bg-white">
 
                     <div class="group h-full flex items-center">
-                        <a href="#"
+                        <a href="index.html"
                             class="flex items-center hover:text-amber-700 transition-colors font-semibold uppercase tracking-wide text-[13px] border-b-2 border-transparent group-hover:border-amber-700 h-full">
                             Home <i class="fa-solid fa-chevron-down ml-1.5 text-[10px]"></i>
                         </a>
@@ -471,67 +549,67 @@
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-6 py-10 lg:px-20">
+    <main class="max-w-7xl mx-auto px-4 sm:px-10 md:px-20 lg:px-24 py-10">
         <nav class="text-[11px] uppercase tracking-widest text-gray-400 mb-8">
             Home / <span class="text-gray-800">Rose gold rings</span>
         </nav>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div class="space-y-4">
-    <div class="bg-[#F9F9F9] rounded-xl p-12 border border-gray-100 flex justify-center overflow-hidden">
-        <img id="productLargeView" 
-             src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-pro-56.jpg?v=1741670785&width=1920" 
-             class="w-full h-auto object-contain transition-transform duration-300" 
-             alt="Main Product Image">
-    </div>
+                <div class="bg-[#F9F9F9] rounded-xl p-12 border border-gray-100 flex justify-center overflow-hidden">
+                    <img id="productLargeView"
+                        src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-pro-56.jpg?v=1741670785&width=1920"
+                        class="w-full h-auto object-contain transition-transform duration-300" alt="Main Product Image">
+                </div>
 
-    <div class="grid grid-cols-5 gap-3" id="thumbContainer">
-        <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-pro-56.jpg?v=1741670785&width=1920" 
-             class="item-thumb cursor-pointer border-2 border-gray-900 rounded p-1">
-        <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-pro-57.jpg?v=1741670785&width=300" 
-             class="item-thumb cursor-pointer border-2 border-transparent rounded p-1">
-        <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-pro-58.jpg?v=1741670785&width=300" 
-             class="item-thumb cursor-pointer border-2 border-transparent rounded p-1">
-        <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-pro-59.jpg?v=1741670785&width=300" 
-             class="item-thumb cursor-pointer border-2 border-transparent rounded p-1">
-        <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-pro-60.jpg?v=1741670785&width=300" 
-             class="item-thumb cursor-pointer border-2 border-transparent rounded p-1">
-    </div>
-</div>
+                <div class="grid grid-cols-5 gap-3" id="thumbContainer">
+                    <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-pro-56.jpg?v=1741670785&width=1920"
+                        class="item-thumb cursor-pointer border-2 border-gray-900 rounded p-1">
+                    <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-pro-57.jpg?v=1741670785&width=300"
+                        class="item-thumb cursor-pointer border-2 border-transparent rounded p-1">
+                    <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-pro-58.jpg?v=1741670785&width=300"
+                        class="item-thumb cursor-pointer border-2 border-transparent rounded p-1">
+                    <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-pro-59.jpg?v=1741670785&width=300"
+                        class="item-thumb cursor-pointer border-2 border-transparent rounded p-1">
+                    <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-pro-60.jpg?v=1741670785&width=300"
+                        class="item-thumb cursor-pointer border-2 border-transparent rounded p-1">
+                </div>
+            </div>
 
-<script>
-    (function() {
-        // This ensures the script waits for the page to be ready
-        document.addEventListener("DOMContentLoaded", function() {
-            const bigImage = document.getElementById('productLargeView');
-            const allThumbs = document.querySelectorAll('.item-thumb');
+            <script>
+                (function () {
+                    // This ensures the script waits for the page to be ready
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const bigImage = document.getElementById('productLargeView');
+                        const allThumbs = document.querySelectorAll('.item-thumb');
 
-            if (!bigImage) return; // Safety check
+                        if (!bigImage) return; // Safety check
 
-            allThumbs.forEach(function(clickedThumb) {
-                clickedThumb.onclick = function() {
-                    // 1. Swap the image
-                    bigImage.src = this.src;
+                        allThumbs.forEach(function (clickedThumb) {
+                            clickedThumb.onclick = function () {
+                                // 1. Swap the image
+                                bigImage.src = this.src;
 
-                    // 2. Reset all borders to transparent
-                    allThumbs.forEach(t => {
-                        t.style.borderColor = 'transparent';
+                                // 2. Reset all borders to transparent
+                                allThumbs.forEach(t => {
+                                    t.style.borderColor = 'transparent';
+                                });
+
+                                // 3. Highlight the clicked one
+                                this.style.borderColor = '#111827'; // Tailwind gray-900 hex
+                            };
+                        });
                     });
-
-                    // 3. Highlight the clicked one
-                    this.style.borderColor = '#111827'; // Tailwind gray-900 hex
-                };
-            });
-        });
-    })();
-</script>
+                })();
+            </script>
 
             <div class="space-y-6">
                 <div>
                     <h1 class="text-3xl font-semibold">Rose gold rings</h1>
                     <div class="flex items-center gap-2 mt-2">
                         <div class="flex text-yellow-400 text-sm">
-                            <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                                class="ri-star-fill"></i><i class="ri-star-fill"></i>
                         </div>
                         <span class="text-xs text-gray-400">1 review</span>
                     </div>
@@ -540,7 +618,8 @@
                 <div class="flex items-baseline gap-4">
                     <span class="text-2xl font-bold text-[#a77f66]">Rs. 22.00</span>
                     <span class="text-gray-400 line-through text-sm">Rs. 40.00</span>
-                    <span class="bg-green-500 text-white text-[10px] px-2 py-0.5 rounded font-bold uppercase">Sale 45%</span>
+                    <span class="bg-green-500 text-white text-[10px] px-2 py-0.5 rounded font-bold uppercase">Sale
+                        45%</span>
                 </div>
                 <p class="text-[11px] text-gray-400 italic -mt-4">Tax included. Shipping calculated at checkout.</p>
 
@@ -549,27 +628,35 @@
                 </div>
 
                 <p class="text-[13px] text-gray-500 leading-relaxed border-t border-gray-100 pt-4">
-                    Care for fiber: 30% more recycled polyester. We label garments manufactured using environmentally friendly technologies and raw materials with the Join Life label.
+                    Care for fiber: 30% more recycled polyester. We label garments manufactured using environmentally
+                    friendly technologies and raw materials with the Join Life label.
                 </p>
 
                 <div class="bg-red-50 border border-red-100 rounded-lg p-4 flex justify-between items-center text-sm">
-    <span class="text-red-600 font-bold italic">Hurry up! Sale ends in:</span>
-    <span id="promo-section-timer" class="font-mono text-red-600 font-bold tracking-tighter text-lg">1647 : 10 : 44 : 54</span>
-</div>
+                    <span class="text-red-600 font-bold italic">Hurry up! Sale ends in:</span>
+                    <span id="promo-section-timer"
+                        class="font-mono text-red-600 font-bold tracking-tighter text-lg">1647 : 10 : 44 : 54</span>
+                </div>
 
                 <div class="space-y-5">
                     <div>
-                        <p class="text-[11px] font-bold uppercase mb-3">Size: <span id="sizeVal" class="font-normal text-gray-400">28</span></p>
+                        <p class="text-[11px] font-bold uppercase mb-3">Size: <span id="sizeVal"
+                                class="font-normal text-gray-400">28</span></p>
                         <div class="flex gap-2">
-                            <button class="size-btn border-2 border-gray-800 px-5 py-2 text-xs font-bold rounded">28</button>
-                            <button class="size-btn border border-gray-200 px-5 py-2 text-xs text-gray-400 rounded">29</button>
-                            <button class="size-btn border border-gray-200 px-5 py-2 text-xs text-gray-400 rounded">30</button>
+                            <button
+                                class="size-btn border-2 border-gray-800 px-5 py-2 text-xs font-bold rounded">28</button>
+                            <button
+                                class="size-btn border border-gray-200 px-5 py-2 text-xs text-gray-400 rounded">29</button>
+                            <button
+                                class="size-btn border border-gray-200 px-5 py-2 text-xs text-gray-400 rounded">30</button>
                         </div>
                     </div>
                     <div>
-                        <p class="text-[11px] font-bold uppercase mb-3">Color: <span class="font-normal text-gray-400">Gold</span></p>
+                        <p class="text-[11px] font-bold uppercase mb-3">Color: <span
+                                class="font-normal text-gray-400">Gold</span></p>
                         <div class="flex gap-3">
-                            <button class="w-6 h-6 rounded-full bg-[#D4AF37] ring-2 ring-offset-2 ring-gray-800"></button>
+                            <button
+                                class="w-6 h-6 rounded-full bg-[#D4AF37] ring-2 ring-offset-2 ring-gray-800"></button>
                             <button class="w-6 h-6 rounded-full bg-[#E6BE8A]"></button>
                             <button class="w-6 h-6 rounded-full bg-[#C0C0C0]"></button>
                         </div>
@@ -582,20 +669,34 @@
                         <input type="text" id="qty" value="1" class="w-10 text-center outline-none font-bold" readonly>
                         <button onclick="changeQty(1)" class="flex-1 text-gray-400 font-bold text-xl">+</button>
                     </div>
-                    <button class="flex-1 border-2 border-gray-800 rounded h-14 font-bold text-[11px] uppercase tracking-widest hover:bg-gray-800 hover:text-white transition-all">Add to Cart</button>
-                    <button id="buyBtnMain" class="flex-1 bg-gray-800 text-white rounded h-14 font-bold text-[11px] uppercase tracking-widest hover:bg-black transition-all">Buy it Now</button>
+                    <button
+                        onclick="addToCart({id: 'rose-gold-ring', name: 'Rose gold rings', price: 'Rs. 22.00', image: 'https://jelwo.myshopify.com/cdn/shop/files/jewelry-pro-56.jpg?v=1741670785&width=1920'}, document.getElementById('qty').value)"
+                        class="flex-1 border-2 border-gray-800 rounded h-14 font-bold text-[11px] uppercase tracking-widest hover:bg-gray-800 hover:text-white transition-all">Add
+                        to Cart</button>
+                    <button id="buyBtnMain"
+                        onclick="addToCart({id: 'rose-gold-ring', name: 'Rose gold rings', price: 'Rs. 22.00', image: 'https://jelwo.myshopify.com/cdn/shop/files/jewelry-pro-56.jpg?v=1741670785&width=1920'}, document.getElementById('qty').value); window.location.href='cart.html';"
+                        class="flex-1 bg-gray-800 text-white rounded h-14 font-bold text-[11px] uppercase tracking-widest hover:bg-black transition-all">Buy
+                        it Now</button>
                 </div>
 
                 <div class="flex flex-wrap gap-6 text-[10px] text-gray-600 font-bold uppercase tracking-widest pt-2">
-                    <a href="#" class="flex items-center gap-1 hover:text-[#a77f66]"><i class="ri-heart-line"></i> Wishlist</a>
-                    <a href="#" class="flex items-center gap-1 hover:text-[#a77f66]"><i class="ri-ruler-line"></i> Sizeguide</a>
-                    <a href="#" class="flex items-center gap-1 hover:text-[#a77f66]"><i class="ri-question-line"></i> Question</a>
-                    <a href="#" class="flex items-center gap-1 hover:text-[#a77f66]"><i class="ri-share-line"></i> Share</a>
+                    <button
+                        onclick="addToWishlist({id: 'rose-gold-ring', name: 'Rose gold rings', price: 'Rs. 22.00', image: 'https://jelwo.myshopify.com/cdn/shop/files/jewelry-pro-56.jpg?v=1741670785&width=1920'})"
+                        class="flex items-center gap-1 hover:text-[#a77f66] uppercase tracking-widest"><i
+                            class="ri-heart-line"></i> Wishlist</button>
+                    <a href="#" class="flex items-center gap-1 hover:text-[#a77f66]"><i class="ri-ruler-line"></i>
+                        Sizeguide</a>
+                    <a href="#" class="flex items-center gap-1 hover:text-[#a77f66]"><i class="ri-question-line"></i>
+                        Question</a>
+                    <a href="#" class="flex items-center gap-1 hover:text-[#a77f66]"><i class="ri-share-line"></i>
+                        Share</a>
                 </div>
 
                 <div class="border-t border-gray-100 pt-6 space-y-2 text-[13px]">
-                    <p><span class="font-bold">Delivery:</span> <span class="text-gray-500">Estimated delivery time: 5-7 days</span></p>
-                    <p><span class="font-bold">Returns:</span> <span class="text-gray-500">Within 45 days of purchase</span></p>
+                    <p><span class="font-bold">Delivery:</span> <span class="text-gray-500">Estimated delivery time: 5-7
+                            days</span></p>
+                    <p><span class="font-bold">Returns:</span> <span class="text-gray-500">Within 45 days of
+                            purchase</span></p>
                     <p><span class="font-bold">Sku:</span> <span class="text-gray-500">445</span></p>
                 </div>
 
@@ -616,71 +717,123 @@
 
                 <div class="pt-8 border-t border-gray-100">
                     <div class="border-b border-gray-100">
-                        <button class="acc-trigger w-full flex justify-between items-center py-5 text-sm font-semibold">Video <i class="ri-add-line"></i></button>
+                        <button
+                            class="acc-trigger w-full flex justify-between items-center py-5 text-sm font-semibold">Video
+                            <i class="ri-add-line"></i></button>
                         <div class="acc-content hidden pb-6 text-xs text-gray-500">Video content placeholder.</div>
                     </div>
 
                     <div class="border-b border-gray-100">
-                        <button class="acc-trigger w-full flex justify-between items-center py-5 text-sm font-semibold">Description <i class="ri-add-line"></i></button>
+                        <button
+                            class="acc-trigger w-full flex justify-between items-center py-5 text-sm font-semibold">Description
+                            <i class="ri-add-line"></i></button>
                         <div class="acc-content hidden pb-10 pt-4">
                             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
                                 <div class="md:col-span-4 flex justify-center">
-                                    <div class="w-56 h-56 rounded-full overflow-hidden border-4 border-gray-50"><img src="https://cdn.shopify.com/s/files/1/0671/2567/4121/files/product-description.jpg?v=1746179918" class="w-full h-full object-cover"></div>
+                                    <div class="w-56 h-56 rounded-full overflow-hidden border-4 border-gray-50"><img
+                                            src="https://cdn.shopify.com/s/files/1/0671/2567/4121/files/product-description.jpg?v=1746179918"
+                                            class="w-full h-full object-cover"></div>
                                 </div>
                                 <div class="md:col-span-4 space-y-6">
-                                    <div><h4 class="text-xs font-bold uppercase mb-2">Product Specifications</h4>
-                                    <p class="text-xs text-gray-500">Care for fiber: 30% more recycled polyester. We label garments with the Join Life label.</p></div>
-                                    <div><h4 class="text-xs font-bold uppercase mb-2">Washing Instructions</h4>
-                                    <ul class="space-y-2 text-xs text-gray-500">
-                                        <li><i class="ri-t-shirt-line mr-2"></i> Iron maximum 100°C</li>
-                                        <li><i class="ri-prohibit-line mr-2"></i> Do not bleach</li>
-                                        <li><i class="ri-wireless-charging-line mr-2"></i> Do not dry clean</li>
-                                    </ul></div>
+                                    <div>
+                                        <h4 class="text-xs font-bold uppercase mb-2">Product Specifications</h4>
+                                        <p class="text-xs text-gray-500">Care for fiber: 30% more recycled polyester. We
+                                            label garments with the Join Life label.</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xs font-bold uppercase mb-2">Washing Instructions</h4>
+                                        <ul class="space-y-2 text-xs text-gray-500">
+                                            <li><i class="ri-t-shirt-line mr-2"></i> Iron maximum 100°C</li>
+                                            <li><i class="ri-prohibit-line mr-2"></i> Do not bleach</li>
+                                            <li><i class="ri-wireless-charging-line mr-2"></i> Do not dry clean</li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="md:col-span-4 space-y-6">
-                                    <div><h4 class="text-xs font-bold uppercase mb-2">Material</h4>
-                                    <p class="text-xs text-gray-500">The Green to Wear 2.0 standard aims to minimize environmental impact of textile production.</p></div>
-                                    <div><h4 class="text-xs font-bold uppercase mb-2">Wearing</h4>
-                                    <p class="text-xs text-gray-500">Model is 1.84 m wearing Size M</p></div>
+                                    <div>
+                                        <h4 class="text-xs font-bold uppercase mb-2">Material</h4>
+                                        <p class="text-xs text-gray-500">The Green to Wear 2.0 standard aims to minimize
+                                            environmental impact of textile production.</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xs font-bold uppercase mb-2">Wearing</h4>
+                                        <p class="text-xs text-gray-500">Model is 1.84 m wearing Size M</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="border-b border-gray-100">
-                        <button class="acc-trigger w-full flex justify-between items-center py-5 text-sm font-semibold">Additional info <i class="ri-add-line"></i></button>
+                        <button
+                            class="acc-trigger w-full flex justify-between items-center py-5 text-sm font-semibold">Additional
+                            info <i class="ri-add-line"></i></button>
                         <div class="acc-content hidden pb-6">
                             <table class="w-full text-xs text-gray-500">
-                                <tr class="border-b border-gray-50"><td class="py-3 font-bold text-gray-800">Vendor</td><td>Jelwo</td></tr>
-                                <tr class="border-b border-gray-50"><td class="py-3 font-bold text-gray-800">Type</td><td>Jewelry</td></tr>
-                                <tr class="border-b border-gray-50"><td class="py-3 font-bold text-gray-800">Size</td><td>28 , 29 , 30</td></tr>
-                                <tr class="border-b border-gray-50"><td class="py-3 font-bold text-gray-800">Weight</td><td>90.718 kg</td></tr>
+                                <tr class="border-b border-gray-50">
+                                    <td class="py-3 font-bold text-gray-800">Vendor</td>
+                                    <td>Jelwo</td>
+                                </tr>
+                                <tr class="border-b border-gray-50">
+                                    <td class="py-3 font-bold text-gray-800">Type</td>
+                                    <td>Jewelry</td>
+                                </tr>
+                                <tr class="border-b border-gray-50">
+                                    <td class="py-3 font-bold text-gray-800">Size</td>
+                                    <td>28 , 29 , 30</td>
+                                </tr>
+                                <tr class="border-b border-gray-50">
+                                    <td class="py-3 font-bold text-gray-800">Weight</td>
+                                    <td>90.718 kg</td>
+                                </tr>
                             </table>
                         </div>
                     </div>
 
                     <div class="border-b border-gray-100">
-                        <button class="acc-trigger w-full flex justify-between items-center py-5 text-sm font-semibold">Return policies <i class="ri-add-line"></i></button>
+                        <button
+                            class="acc-trigger w-full flex justify-between items-center py-5 text-sm font-semibold">Return
+                            policies <i class="ri-add-line"></i></button>
                         <div class="acc-content hidden pb-8 pt-2 text-[13px] text-gray-500 leading-relaxed">
-                            <p>Provided the conditions in our refund policy have been met, refunds will be processed using the original form of payment. Items must be returned within 30 days in original condition with all labels attached.</p>
+                            <p>Provided the conditions in our refund policy have been met, refunds will be processed
+                                using the original form of payment. Items must be returned within 30 days in original
+                                condition with all labels attached.</p>
                         </div>
                     </div>
 
                     <div class="border-b border-gray-100">
-                        <button class="acc-trigger w-full flex justify-between items-center py-5 text-sm font-semibold">Review <i class="ri-add-line"></i></button>
+                        <button
+                            class="acc-trigger w-full flex justify-between items-center py-5 text-sm font-semibold">Review
+                            <i class="ri-add-line"></i></button>
                         <div class="acc-content hidden pb-10 pt-6">
-                            <div class="flex flex-col md:flex-row items-center justify-between bg-gray-50 p-8 rounded-xl gap-8">
+                            <div
+                                class="flex flex-col md:flex-row items-center justify-between bg-gray-50 p-8 rounded-xl gap-8">
                                 <div class="text-center">
-                                    <div class="text-yellow-400 text-xl flex justify-center"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                                    <div class="text-yellow-400 text-xl flex justify-center"><i
+                                            class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                                            class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                                            class="ri-star-fill"></i></div>
                                     <p class="text-sm font-bold text-gray-800 mt-2">5.00 out of 5</p>
-                                    <p class="text-[10px] text-gray-400 uppercase tracking-tighter">Based on 1 review</p>
+                                    <p class="text-[10px] text-gray-400 uppercase tracking-tighter">Based on 1 review
+                                    </p>
                                 </div>
-                                <button class="bg-[#a77f66] text-white px-8 py-3 rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-[#8e6b56]">Write a Review</button>
+                                <button
+                                    class="bg-[#a77f66] text-white px-8 py-3 rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-[#8e6b56]">Write
+                                    a Review</button>
                             </div>
                             <div class="mt-8 border border-gray-100 rounded p-6 max-w-sm">
-                                <div class="flex justify-between items-center mb-4"><div class="flex text-yellow-400 text-[10px]"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div><span class="text-[10px] text-gray-400">04/14/2025</span></div>
-                                <div class="flex items-center gap-2 mb-2"><div class="w-6 h-6 bg-gray-200 rounded-full"></div><span class="text-xs font-bold">rgre</span></div>
-                                <h5 class="text-xs font-bold">grgr</h5><p class="text-xs text-gray-500">ggg</p>
+                                <div class="flex justify-between items-center mb-4">
+                                    <div class="flex text-yellow-400 text-[10px]"><i class="ri-star-fill"></i><i
+                                            class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                                            class="ri-star-fill"></i><i class="ri-star-fill"></i></div><span
+                                        class="text-[10px] text-gray-400">04/14/2025</span>
+                                </div>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <div class="w-6 h-6 bg-gray-200 rounded-full"></div><span
+                                        class="text-xs font-bold">rgre</span>
+                                </div>
+                                <h5 class="text-xs font-bold">grgr</h5>
+                                <p class="text-xs text-gray-500">ggg</p>
                             </div>
                         </div>
                     </div>
@@ -690,200 +843,324 @@
     </main>
     <div class="max-w-6xl mx-auto px-6 py-16 space-y-24 font-sans">
 
-  <section class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-    <div class="w-full md:w-1/2">
-      <img src="https://jelwo.myshopify.com/cdn/shop/files/product-about-img-1.jpg?v=1745823026&width=832" 
-           alt="Jewelry Showcase" 
-           class="w-full h-auto object-cover aspect-[4/3]">
+        <section class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+            <div class="w-full md:w-1/2">
+                <img src="https://jelwo.myshopify.com/cdn/shop/files/product-about-img-1.jpg?v=1745823026&width=832"
+                    alt="Jewelry Showcase" class="w-full h-auto object-cover aspect-[4/3]">
+            </div>
+            <div class="w-full md:w-1/2">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 leading-tight">
+                    New woman fashion<br>arrivals
+                </h2>
+                <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-8">
+                    As part of our mission create space for women to express their sensuality
+                    without shame fear or the patriarchal gaze we're asking women to invite
+                    us into their most intimate space.
+                </p>
+                <button
+                    class="bg-[#A6866E] hover:bg-[#8e715b] text-white text-[10px] font-black tracking-[0.2em] uppercase px-10 py-4 rounded-full transition-all">
+                    Shop Now
+                </button>
+            </div>
+        </section>
+
+        <section class="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-20">
+            <div class="w-full md:w-1/2">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 leading-tight">
+                    I make clothes make<br>fashion
+                </h2>
+                <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-8">
+                    As part of our mission create space for women to express their sensuality
+                    without shame fear or the patriarchal gaze we're asking women to invite
+                    us into their most intimate space.
+                </p>
+                <button
+                    class="bg-[#A6866E] hover:bg-[#8e715b] text-white text-[10px] font-black tracking-[0.2em] uppercase px-10 py-4 rounded-full transition-all">
+                    Shop Now
+                </button>
+            </div>
+            <div class="w-full md:w-1/2">
+                <img src="https://jelwo.myshopify.com/cdn/shop/files/product-about-img-2.jpg?v=1745823024&width=832"
+                    alt="Earrings Detail" class="w-full h-auto object-cover aspect-[4/3]">
+            </div>
+        </section>
+
     </div>
-    <div class="w-full md:w-1/2">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 leading-tight">
-        New woman fashion<br>arrivals
-      </h2>
-      <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-8">
-        As part of our mission create space for women to express their sensuality 
-        without shame fear or the patriarchal gaze we're asking women to invite 
-        us into their most intimate space.
-      </p>
-      <button class="bg-[#A6866E] hover:bg-[#8e715b] text-white text-[10px] font-black tracking-[0.2em] uppercase px-10 py-4 rounded-full transition-all">
-        Shop Now
-      </button>
-    </div>
-  </section>
 
-  <section class="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-20">
-    <div class="w-full md:w-1/2">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 leading-tight">
-        I make clothes make<br>fashion
-      </h2>
-      <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-8">
-        As part of our mission create space for women to express their sensuality 
-        without shame fear or the patriarchal gaze we're asking women to invite 
-        us into their most intimate space.
-      </p>
-      <button class="bg-[#A6866E] hover:bg-[#8e715b] text-white text-[10px] font-black tracking-[0.2em] uppercase px-10 py-4 rounded-full transition-all">
-        Shop Now
-      </button>
-    </div>
-    <div class="w-full md:w-1/2">
-      <img src="https://jelwo.myshopify.com/cdn/shop/files/product-about-img-2.jpg?v=1745823024&width=832" 
-           alt="Earrings Detail" 
-           class="w-full h-auto object-cover aspect-[4/3]">
-    </div>
-  </section>
+    <section class="py-10 bg-gray-100 overflow-hidden">
+        <div class="container mx-auto px-4 md:px-24">
+            <p class="text-xl font-times promoTimerInterval text-center mb-2 text-[#a77f66]">
+                You might also like
+            </p>
+            <h2 class="text-3xl font-serif text-center mb-14 text-gray-800">
+                Recommended product
+            </h2>
 
-</div>
+            <div class="swiper myJewelrySwiper mb-12">
+                <div class="swiper-wrapper">
 
-<section class="py-10 bg-gray-100 overflow-hidden">
-    <div class="container mx-auto px-4 md:px-24">
-        <p class="text-xl font-times promoTimerInterval text-center mb-2 text-[#a77f66]">
-            You might also like
-        </p>
-        <h2 class="text-3xl font-serif text-center mb-14 text-gray-800">
-            Recommended product
-        </h2>
+                    <div
+                        class="swiper-slide group relative border border-gray-100 bg-white text-center transition-all hover:shadow-lg h-auto">
+                        <div class="relative aspect-square overflow-hidden bg-[#f9f9f9] p-8">
+                            <span
+                                class="absolute left-2 top-2 z-20 bg-[#48bb78] px-2 py-1 text-xs text-white">25%</span>
+                            <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-product-6.jpg?v=1742442751&width=1920"
+                                alt="Pearl Earrings" class="mx-auto h-full object-contain">
 
-        <div class="swiper myJewelrySwiper mb-12">
-            <div class="swiper-wrapper">
-
-                <div class="swiper-slide group relative border border-gray-100 bg-white text-center transition-all hover:shadow-lg h-auto">
-                    <div class="relative aspect-square overflow-hidden bg-[#f9f9f9] p-8">
-                        <span class="absolute left-2 top-2 z-20 bg-[#48bb78] px-2 py-1 text-xs text-white">25%</span>
-                        <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-product-6.jpg?v=1742442751&width=1920" alt="Pearl Earrings" class="mx-auto h-full object-contain">
-
-                        <div class="absolute inset-0 z-10 flex items-center justify-center gap-3 bg-[#bb9d89] opacity-0 transition-opacity duration-300 group-hover:opacity-90">
-                            <button class="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-[#bb9d89] transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" /></svg>
-                            </button>
-                            <button class="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-[#bb9d89] transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="p-4 h-32 flex flex-col justify-center">
-                        <div class="group-hover:hidden">
-                            <p class="text-[10px] uppercase tracking-widest text-gray-400">Jewelry</p>
-                            <h3 class="font-bold text-gray-800">Simple Pearl earrings</h3>
-                            <p class="mt-2 text-[#b58e58] font-bold">Rs. 15.00 <span class="text-gray-400 line-through font-normal ml-1">Rs. 20.00</span></p>
-                        </div>
-                        <div class="hidden group-hover:flex flex-col items-center gap-3">
-                            <div class="flex gap-2">
-                                <select class="border border-gray-200 text-xs p-1 outline-none text-gray-500"><option>Gold</option></select>
-                                <div class="flex border border-gray-200 items-center text-xs">
-                                    <button class="px-2 text-gray-400">-</button>
-                                    <span class="px-2 border-x border-gray-100">1</span>
-                                    <button class="px-2 text-gray-400">+</button>
-                                </div>
+                            <div
+                                class="absolute inset-0 z-10 flex items-center justify-center gap-3 bg-[#bb9d89] opacity-0 transition-opacity duration-300 group-hover:opacity-90">
+                                <button
+                                    onclick="addToWishlist({id: 'pearl-earrings', name: 'Simple Pearl earrings', price: 'Rs. 15.00', image: 'https://jelwo.myshopify.com/cdn/shop/files/jewelry-product-6.jpg?v=1742442751&width=1920'})"
+                                    class="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-[#bb9d89] transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                    </svg>
+                                </button>
+                                <button
+                                    class="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-[#bb9d89] transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    </svg>
+                                </button>
                             </div>
-                            <button class="border-b border-[#bb9d89] text-[#bb9d89] font-bold text-xs uppercase tracking-[0.2em] pb-1">Add to Cart</button>
                         </div>
-                    </div>
-                </div>
 
-                <div class="swiper-slide group relative border border-gray-100 bg-white text-center transition-all hover:shadow-lg h-auto">
-                    <div class="relative aspect-square overflow-hidden bg-[#f9f9f9] p-8">
-                        <span class="absolute left-2 top-2 z-20 bg-[#48bb78] px-2 py-1 text-xs text-white">45%</span>
-                        <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-product-9.jpg?v=1742442751&width=1920" alt="Diamond Ring" class="mx-auto h-full object-contain">
-                        <div class="absolute inset-0 z-10 flex items-center justify-center gap-3 bg-[#bb9d89] opacity-0 transition-opacity duration-300 group-hover:opacity-90">
-                            <button class="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-[#bb9d89] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" /></svg></button>
-                            <button class="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-[#bb9d89] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg></button>
+                        <div class="p-4 h-32 relative overflow-hidden flex flex-col justify-center">
+                            <div
+                                class="transition-all duration-500 group-hover:-translate-y-full group-hover:opacity-0 text-center">
+                                <p class="text-[10px] uppercase tracking-widest text-gray-400">Jewelry</p>
+                                <h3 class="font-bold text-gray-800">Simple Pearl earrings</h3>
+                                <p class="mt-2 text-[#b58e58] font-bold">Rs. 15.00 <span
+                                        class="text-gray-400 line-through font-normal ml-1">Rs. 20.00</span></p>
+                            </div>
+                            <div
+                                class="absolute inset-0 flex flex-col items-center justify-center gap-3 translate-y-full opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 px-4">
+                                <div class="flex gap-2">
+                                    <select class="border border-gray-200 text-xs p-1 outline-none text-gray-500">
+                                        <option>Gold</option>
+                                    </select>
+                                    <div class="flex border border-gray-200 items-center text-xs">
+                                        <button class="px-2 text-gray-400">-</button>
+                                        <span class="px-2 border-x border-gray-100">1</span>
+                                        <button class="px-2 text-gray-400">+</button>
+                                    </div>
+                                </div>
+                                <button
+                                    class="border-b border-[#bb9d89] text-[#bb9d89] font-bold text-xs uppercase tracking-[0.2em] pb-1 hover:text-black hover:border-black transition-colors">Add
+                                    to Cart</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-4 h-32 flex flex-col justify-center">
-                        <div class="group-hover:hidden">
-                            <p class="text-[10px] uppercase tracking-widest text-gray-400">Jewelry</p>
-                            <h3 class="font-bold text-gray-800">Chic diamond ring</h3>
-                            <p class="mt-2 text-[#b58e58] font-bold">From Rs. 22.00 <span class="text-gray-400 line-through font-normal ml-1">Rs. 40.00</span></p>
-                        </div>
-                        <div class="hidden group-hover:flex flex-col items-center gap-3">
-                            <div class="flex gap-2"><select class="border border-gray-200 text-xs p-1 outline-none text-gray-500"><option>Gold</option></select>
-                            <div class="flex border border-gray-200 items-center text-xs"><button class="px-2 text-gray-400">-</button><span class="px-2 border-x border-gray-100">1</span><button class="px-2 text-gray-400">+</button></div></div>
-                            <button class="border-b border-[#bb9d89] text-[#bb9d89] font-bold text-xs uppercase tracking-[0.2em] pb-1">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide group relative border border-gray-100 bg-white text-center transition-all hover:shadow-lg h-auto">
-                    <div class="relative aspect-square overflow-hidden bg-[#f9f9f9] p-8">
-                        <span class="absolute left-2 top-2 z-20 bg-[#48bb78] px-2 py-1 text-xs text-white">45%</span>
-                        <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-product-9.jpg?v=1742442751&width=1920" alt="Diamond Ring" class="mx-auto h-full object-contain">
-                        <div class="absolute inset-0 z-10 flex items-center justify-center gap-3 bg-[#bb9d89] opacity-0 transition-opacity duration-300 group-hover:opacity-90">
-                            <button class="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-[#bb9d89] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" /></svg></button>
-                            <button class="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-[#bb9d89] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg></button>
-                        </div>
-                    </div>
-                    <div class="p-4 h-32 flex flex-col justify-center">
-                        <div class="group-hover:hidden">
-                            <p class="text-[10px] uppercase tracking-widest text-gray-400">Jewelry</p>
-                            <h3 class="font-bold text-gray-800">Chic diamond ring</h3>
-                            <p class="mt-2 text-[#b58e58] font-bold">From Rs. 22.00 <span class="text-gray-400 line-through font-normal ml-1">Rs. 40.00</span></p>
-                        </div>
-                        <div class="hidden group-hover:flex flex-col items-center gap-3">
-                            <div class="flex gap-2"><select class="border border-gray-200 text-xs p-1 outline-none text-gray-500"><option>Gold</option></select>
-                            <div class="flex border border-gray-200 items-center text-xs"><button class="px-2 text-gray-400">-</button><span class="px-2 border-x border-gray-100">1</span><button class="px-2 text-gray-400">+</button></div></div>
-                            <button class="border-b border-[#bb9d89] text-[#bb9d89] font-bold text-xs uppercase tracking-[0.2em] pb-1">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
 
-                                <div class="swiper-slide group relative border border-gray-100 bg-white text-center transition-all hover:shadow-lg h-auto">
-                    <div class="relative aspect-square overflow-hidden bg-[#f9f9f9] p-8">
-                        <span class="absolute left-2 top-2 z-20 bg-[#48bb78] px-2 py-1 text-xs text-white">45%</span>
-                        <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-product-9.jpg?v=1742442751&width=1920" alt="Diamond Ring" class="mx-auto h-full object-contain">
-                        <div class="absolute inset-0 z-10 flex items-center justify-center gap-3 bg-[#bb9d89] opacity-0 transition-opacity duration-300 group-hover:opacity-90">
-                            <button class="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-[#bb9d89] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" /></svg></button>
-                            <button class="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-[#bb9d89] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg></button>
+                    <div
+                        class="swiper-slide group relative border border-gray-100 bg-white text-center transition-all hover:shadow-lg h-auto">
+                        <div class="relative aspect-square overflow-hidden bg-[#f9f9f9] p-8">
+                            <span
+                                class="absolute left-2 top-2 z-20 bg-[#48bb78] px-2 py-1 text-xs text-white">45%</span>
+                            <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-product-9.jpg?v=1742442751&width=1920"
+                                alt="Diamond Ring" class="mx-auto h-full object-contain">
+                            <div
+                                class="absolute inset-0 z-10 flex items-center justify-center gap-3 bg-[#bb9d89] opacity-0 transition-opacity duration-300 group-hover:opacity-90">
+                                <button
+                                    class="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-[#bb9d89] transition-colors"><svg
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                    </svg></button>
+                                <button
+                                    class="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-[#bb9d89] transition-colors"><svg
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="p-4 h-32 relative overflow-hidden flex flex-col justify-center">
+                            <div
+                                class="transition-all duration-500 group-hover:-translate-y-full group-hover:opacity-0 text-center">
+                                <p class="text-[10px] uppercase tracking-widest text-gray-400">Jewelry</p>
+                                <h3 class="font-bold text-gray-800">Chic diamond ring</h3>
+                                <p class="mt-2 text-[#b58e58] font-bold">From Rs. 22.00 <span
+                                        class="text-gray-400 line-through font-normal ml-1">Rs. 40.00</span></p>
+                            </div>
+                            <div
+                                class="absolute inset-0 flex flex-col items-center justify-center gap-3 translate-y-full opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 px-4">
+                                <div class="flex gap-2">
+                                    <select class="border border-gray-200 text-xs p-1 outline-none text-gray-500">
+                                        <option>Gold</option>
+                                    </select>
+                                    <div class="flex border border-gray-200 items-center text-xs"><button
+                                            class="px-2 text-gray-400">-</button><span
+                                            class="px-2 border-x border-gray-100">1</span><button
+                                            class="px-2 text-gray-400">+</button></div>
+                                </div>
+                                <button
+                                    class="border-b border-[#bb9d89] text-[#bb9d89] font-bold text-xs uppercase tracking-[0.2em] pb-1 hover:text-black hover:border-black transition-colors">Add
+                                    to Cart</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-4 h-32 flex flex-col justify-center">
-                        <div class="group-hover:hidden">
-                            <p class="text-[10px] uppercase tracking-widest text-gray-400">Jewelry</p>
-                            <h3 class="font-bold text-gray-800">Chic diamond ring</h3>
-                            <p class="mt-2 text-[#b58e58] font-bold">From Rs. 22.00 <span class="text-gray-400 line-through font-normal ml-1">Rs. 40.00</span></p>
+                    <div
+                        class="swiper-slide group relative border border-gray-100 bg-white text-center transition-all hover:shadow-lg h-auto">
+                        <div class="relative aspect-square overflow-hidden bg-[#f9f9f9] p-8">
+                            <span
+                                class="absolute left-2 top-2 z-20 bg-[#48bb78] px-2 py-1 text-xs text-white">45%</span>
+                            <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-product-9.jpg?v=1742442751&width=1920"
+                                alt="Diamond Ring" class="mx-auto h-full object-contain">
+                            <div
+                                class="absolute inset-0 z-10 flex items-center justify-center gap-3 bg-[#bb9d89] opacity-0 transition-opacity duration-300 group-hover:opacity-90">
+                                <button
+                                    class="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-[#bb9d89] transition-colors"><svg
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                    </svg></button>
+                                <button
+                                    class="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-[#bb9d89] transition-colors"><svg
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    </svg></button>
+                            </div>
                         </div>
-                        <div class="hidden group-hover:flex flex-col items-center gap-3">
-                            <div class="flex gap-2"><select class="border border-gray-200 text-xs p-1 outline-none text-gray-500"><option>Gold</option></select>
-                            <div class="flex border border-gray-200 items-center text-xs"><button class="px-2 text-gray-400">-</button><span class="px-2 border-x border-gray-100">1</span><button class="px-2 text-gray-400">+</button></div></div>
-                            <button class="border-b border-[#bb9d89] text-[#bb9d89] font-bold text-xs uppercase tracking-[0.2em] pb-1">Add to Cart</button>
+                        <div class="p-4 h-32 relative overflow-hidden flex flex-col justify-center">
+                            <div
+                                class="transition-all duration-500 group-hover:-translate-y-full group-hover:opacity-0 text-center">
+                                <p class="text-[10px] uppercase tracking-widest text-gray-400">Jewelry</p>
+                                <h3 class="font-bold text-gray-800">Chic diamond ring</h3>
+                                <p class="mt-2 text-[#b58e58] font-bold">From Rs. 22.00 <span
+                                        class="text-gray-400 line-through font-normal ml-1">Rs. 40.00</span></p>
+                            </div>
+                            <div
+                                class="absolute inset-0 flex flex-col items-center justify-center gap-3 translate-y-full opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 px-4">
+                                <div class="flex gap-2">
+                                    <select class="border border-gray-200 text-xs p-1 outline-none text-gray-500">
+                                        <option>Gold</option>
+                                    </select>
+                                    <div class="flex border border-gray-200 items-center text-xs"><button
+                                            class="px-2 text-gray-400">-</button><span
+                                            class="px-2 border-x border-gray-100">1</span><button
+                                            class="px-2 text-gray-400">+</button></div>
+                                </div>
+                                <button
+                                    class="border-b border-[#bb9d89] text-[#bb9d89] font-bold text-xs uppercase tracking-[0.2em] pb-1 hover:text-black hover:border-black transition-colors">Add
+                                    to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="swiper-slide group relative border border-gray-100 bg-white text-center transition-all hover:shadow-lg h-auto">
+                        <div class="relative aspect-square overflow-hidden bg-[#f9f9f9] p-8">
+                            <span
+                                class="absolute left-2 top-2 z-20 bg-[#48bb78] px-2 py-1 text-xs text-white">45%</span>
+                            <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-product-9.jpg?v=1742442751&width=1920"
+                                alt="Diamond Ring" class="mx-auto h-full object-contain">
+                            <div
+                                class="absolute inset-0 z-10 flex items-center justify-center gap-3 bg-[#bb9d89] opacity-0 transition-opacity duration-300 group-hover:opacity-90">
+                                <button
+                                    class="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-[#bb9d89] transition-colors"><svg
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                    </svg></button>
+                                <button
+                                    class="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-[#bb9d89] transition-colors"><svg
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="p-4 h-32 relative overflow-hidden flex flex-col justify-center">
+                            <div
+                                class="transition-all duration-500 group-hover:-translate-y-full group-hover:opacity-0 text-center">
+                                <p class="text-[10px] uppercase tracking-widest text-gray-400">Jewelry</p>
+                                <h3 class="font-bold text-gray-800">Chic diamond ring</h3>
+                                <p class="mt-2 text-[#b58e58] font-bold">From Rs. 22.00 <span
+                                        class="text-gray-400 line-through font-normal ml-1">Rs. 40.00</span></p>
+                            </div>
+                            <div
+                                class="absolute inset-0 flex flex-col items-center justify-center gap-3 translate-y-full opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 px-4">
+                                <div class="flex gap-2">
+                                    <select class="border border-gray-200 text-xs p-1 outline-none text-gray-500">
+                                        <option>Gold</option>
+                                    </select>
+                                    <div class="flex border border-gray-200 items-center text-xs"><button
+                                            class="px-2 text-gray-400">-</button><span
+                                            class="px-2 border-x border-gray-100">1</span><button
+                                            class="px-2 text-gray-400">+</button></div>
+                                </div>
+                                <button
+                                    class="border-b border-[#bb9d89] text-[#bb9d89] font-bold text-xs uppercase tracking-[0.2em] pb-1 hover:text-black hover:border-black transition-colors">Add
+                                    to Cart</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
+
         </div>
-
-    </div>
-</section>
+    </section>
 
     <!-- Sticky Bar -->
-    <div id="stickyBar" class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 px-6 py-4 z-50 transform translate-y-full transition-transform duration-500 shadow-2xl">
+    <div id="stickyBar"
+        class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 px-6 py-4 z-50 transform translate-y-full transition-transform duration-500 shadow-2xl">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-4">
-                <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=100" class="w-12 h-12 object-contain bg-gray-50 rounded">
-                <div class="hidden md:block"><p class="text-sm font-bold">Rose gold rings</p><p class="text-xs text-[#a77f66] font-bold">Rs. 22.00</p></div>
+                <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=100"
+                    class="w-12 h-12 object-contain bg-gray-50 rounded">
+                <div class="hidden md:block">
+                    <p class="text-sm font-bold">Rose gold rings</p>
+                    <p class="text-xs text-[#a77f66] font-bold">Rs. 22.00</p>
+                </div>
             </div>
             <div class="flex items-center gap-4">
-                <select class="border border-gray-200 rounded-lg px-4 py-3 text-[11px] font-bold hidden sm:block bg-gray-50"><option>28 / Gold - Rs. 22.00</option></select>
+                <select
+                    class="border border-gray-200 rounded-lg px-4 py-3 text-[11px] font-bold hidden sm:block bg-gray-50">
+                    <option>28 / Gold - Rs. 22.00</option>
+                </select>
                 <div class="flex items-center border border-gray-200 rounded h-12">
                     <button onclick="changeQty(-1)" class="px-3 text-gray-400">-</button>
                     <input type="text" id="stickyQty" value="1" class="w-6 text-center text-xs font-bold" readonly>
                     <button onclick="changeQty(1)" class="px-3 text-gray-400">+</button>
                 </div>
-                <button class="bg-gray-800 text-white px-10 h-12 rounded font-bold text-[10px] uppercase tracking-widest">Add to Cart</button>
+                <button
+                    class="bg-gray-800 text-white px-10 h-12 rounded font-bold text-[10px] uppercase tracking-widest">Add
+                    to Cart</button>
             </div>
         </div>
     </div>
 
     <!-- Footer from index.html -->
     <footer class="bg-[#FCF8F4] border-t border-gray-100 pt-16 pb-8 font-sans">
-        <div class="container mx-auto px-6 lg:px-24">
-            
+        <div class="container mx-auto px-4 sm:px-10 md:px-20 lg:px-24">
+
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 mb-16">
-                
+
                 <div class="space-y-6">
                     <a href="/" class="block">
                         <div class="flex items-center gap-1">
                             <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-4-logo.png?v=1744805986&width=352"
-                        class="w-24 md:w-32" alt="Logo" />
+                                class="w-24 md:w-32" alt="Logo" />
                         </div>
                     </a>
                     <ul class="space-y-4 text-sm text-gray-500">
@@ -893,11 +1170,13 @@
                         </li>
                         <li class="flex items-center gap-3">
                             <span class="text-[#a77f66]"><i class="ri-phone-line"></i></span>
-                            <a href="tel:+2201234567890" class="hover:text-[#a77f66] transition-colors">+ (220) 123 456 7890</a>
+                            <a href="tel:+2201234567890" class="hover:text-[#a77f66] transition-colors">+ (220) 123 456
+                                7890</a>
                         </li>
                         <li class="flex items-center gap-3">
                             <span class="text-[#a77f66]"><i class="ri-mail-line"></i></span>
-                            <a href="mailto:demo123546@gmail.com" class="hover:text-[#a77f66] transition-colors">demo123546@gmail.com</a>
+                            <a href="mailto:demo123546@gmail.com"
+                                class="hover:text-[#a77f66] transition-colors">demo123546@gmail.com</a>
                         </li>
                     </ul>
                 </div>
@@ -945,32 +1224,48 @@
 
             <div class="flex flex-col lg:flex-row items-center justify-between gap-8 py-12 border-t border-gray-200">
                 <div class="flex space-x-3">
-                    <a href="#" class="w-11 h-11 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:text-[#a77f66] transition-all"><i class="ri-facebook-fill"></i></a>
-                    <a href="#" class="w-11 h-11 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:text-[#a77f66] transition-all"><i class="ri-twitter-x-line"></i></a>
-                    <a href="#" class="w-11 h-11 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:text-[#a77f66] transition-all"><i class="ri-instagram-line"></i></a>
-                    <a href="#" class="w-11 h-11 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:text-[#a77f66] transition-all"><i class="ri-pinterest-line"></i></a>
-                    <a href="#" class="w-11 h-11 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:text-[#a77f66] transition-all"><i class="ri-youtube-line"></i></a>
+                    <a href="#"
+                        class="w-11 h-11 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:text-[#a77f66] transition-all"><i
+                            class="ri-facebook-fill"></i></a>
+                    <a href="#"
+                        class="w-11 h-11 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:text-[#a77f66] transition-all"><i
+                            class="ri-twitter-x-line"></i></a>
+                    <a href="#"
+                        class="w-11 h-11 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:text-[#a77f66] transition-all"><i
+                            class="ri-instagram-line"></i></a>
+                    <a href="#"
+                        class="w-11 h-11 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:text-[#a77f66] transition-all"><i
+                            class="ri-pinterest-line"></i></a>
+                    <a href="#"
+                        class="w-11 h-11 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:text-[#a77f66] transition-all"><i
+                            class="ri-youtube-line"></i></a>
                 </div>
 
                 <div class="flex flex-col md:flex-row items-center gap-6">
                     <p class="text-[#a77f66] font-medium text-lg">Subscribe and get 15% discount.</p>
-                    <div class="relative flex items-center bg-[#F4F1EE] rounded-full p-1 border border-gray-200 w-full md:w-[450px]">
-                        <input type="email" placeholder="Enter your email" 
+                    <div
+                        class="relative flex items-center bg-[#F4F1EE] rounded-full p-1 border border-gray-200 w-full md:w-[450px]">
+                        <input type="email" placeholder="Enter your email"
                             class="bg-transparent w-full pl-6 pr-4 py-3 outline-none text-gray-600 text-sm">
-                        <button class="bg-[#a77f66] text-white px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-[#8e6b56] transition-colors">
+                        <button
+                            class="bg-[#a77f66] text-white px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-[#8e6b56] transition-colors">
                             SUBSCRIBE
                         </button>
                     </div>
                 </div>
             </div>
 
-            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+            <div
+                class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
                 <p>Copyright © 2026 by spacingtech</p>
-                
+
                 <div class="flex items-center gap-2 mt-4 md:mt-0">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" class="h-4 grayscale hover:grayscale-0 cursor-pointer">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" class="h-6 grayscale hover:grayscale-0 cursor-pointer">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="Paypal" class="h-4 grayscale hover:grayscale-0 cursor-pointer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa"
+                        class="h-4 grayscale hover:grayscale-0 cursor-pointer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard"
+                        class="h-6 grayscale hover:grayscale-0 cursor-pointer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="Paypal"
+                        class="h-4 grayscale hover:grayscale-0 cursor-pointer">
                 </div>
             </div>
         </div>
@@ -980,31 +1275,31 @@
     <script src="script.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-    // 5. Unique Countdown Simulation for Product Page
-    function startProductPromoCountdown() {
-        const clock = document.getElementById('promo-section-timer');
-        
-        // Safety check to ensure the element exists on the page
-        if (!clock) return;
+        // 5. Unique Countdown Simulation for Product Page
+        function startProductPromoCountdown() {
+            const clock = document.getElementById('promo-section-timer');
 
-        let sec = 54;
-        
-        // Clear any existing intervals if this script is re-run
-        if (window.promoTimerInterval) clearInterval(window.promoTimerInterval);
+            // Safety check to ensure the element exists on the page
+            if (!clock) return;
 
-        window.promoTimerInterval = setInterval(() => {
-            sec--;
-            if (sec < 0) sec = 59;
-            
-            // padStart(2, '0') ensures "09" instead of "9"
-            const formattedSec = sec.toString().padStart(2, '0');
-            clock.innerText = `1647 : 10 : 44 : ${formattedSec}`;
-        }, 1000);
-    }
+            let sec = 54;
 
-    // Initialize the countdown when the DOM is ready
-    document.addEventListener('DOMContentLoaded', startProductPromoCountdown);
-</script>
+            // Clear any existing intervals if this script is re-run
+            if (window.promoTimerInterval) clearInterval(window.promoTimerInterval);
+
+            window.promoTimerInterval = setInterval(() => {
+                sec--;
+                if (sec < 0) sec = 59;
+
+                // padStart(2, '0') ensures "09" instead of "9"
+                const formattedSec = sec.toString().padStart(2, '0');
+                clock.innerText = `1647 : 10 : 44 : ${formattedSec}`;
+            }, 1000);
+        }
+
+        // Initialize the countdown when the DOM is ready
+        document.addEventListener('DOMContentLoaded', startProductPromoCountdown);
+    </script>
 
 </body>
 
