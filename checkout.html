@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Jelwo Jewelry</title>
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-serif {
+            font-family: 'Playfair+Display', serif;
+        }
+
+        /* Custom Shopify-like input styling */
+        .checkout-input {
+            width: 100%;
+            padding: 0.75rem 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .checkout-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 1px #3b82f6;
+        }
+
+        .section-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <div class="min-h-screen flex flex-col lg:flex-row">
+        <!-- Left Side: Forms (60%) -->
+        <div class="lg:w-[58%] px-6 md:px-12 lg:px-24 py-8 md:py-12 border-r border-gray-100">
+            <!-- Header -->
+            <header class="mb-12 flex justify-between items-center">
+                <a href="index.html" class="block">
+                    <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-4-logo.png?v=1744805986&width=352"
+                        class="w-24 md:w-28" alt="Logo" />
+                </a>
+                <a href="cart.html" class="text-gray-500 hover:text-gray-800">
+                    <i class="ri-shopping-bag-line text-xl"></i>
+                </a>
+            </header>
+
+            <form id="checkout-form" class="space-y-10">
+                <!-- Contact Section -->
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="section-title mb-0">Contact</h2>
+                        <a href="#" class="text-xs text-blue-600 underline">Log in</a>
+                    </div>
+                    <input type="text" placeholder="Email or mobile phone number" class="checkout-input" required>
+                    <label class="flex items-center gap-2 mt-3 cursor-pointer">
+                        <input type="checkbox"
+                            class="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-gray-600">Email me with news and offers</span>
+                    </label>
+                </div>
+
+                <!-- Delivery Section -->
+                <div>
+                    <h2 class="section-title">Delivery</h2>
+                    <div class="border border-gray-200 rounded-md overflow-hidden">
+                        <label
+                            class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50 border-b border-gray-200 group">
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="delivery_method" value="ship" checked
+                                    class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+                                <span class="text-sm font-medium">Ship</span>
+                            </div>
+                            <i class="ri-truck-line text-gray-400 group-hover:text-gray-600"></i>
+                        </label>
+                        <label class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50 group">
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="delivery_method" value="pickup"
+                                    class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+                                <span class="text-sm font-medium">Pick up</span>
+                            </div>
+                            <i class="ri-store-2-line text-gray-400 group-hover:text-gray-600"></i>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Shipping Address Section -->
+                <div class="space-y-4">
+                    <select class="checkout-input bg-white cursor-pointer">
+                        <option value="India">India</option>
+                        <option value="USA">United States</option>
+                        <option value="UK">United Kingdom</option>
+                    </select>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" placeholder="First name (optional)" class="checkout-input">
+                        <input type="text" placeholder="Last name" class="checkout-input" required>
+                    </div>
+
+                    <div class="relative">
+                        <input type="text" placeholder="Address" class="checkout-input pr-10" required>
+                        <i class="ri-search-line absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    </div>
+
+                    <input type="text" placeholder="Apartment, suite, etc. (optional)" class="checkout-input">
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <input type="text" placeholder="City" class="checkout-input" required>
+                        <select class="checkout-input bg-white cursor-pointer">
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Delhi">Delhi</option>
+                        </select>
+                        <input type="text" placeholder="PIN code" class="checkout-input" required>
+                    </div>
+
+                    <label class="flex items-center gap-2 mt-2 cursor-pointer">
+                        <input type="checkbox"
+                            class="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-gray-600">Save this information for next time</span>
+                    </label>
+                </div>
+
+                <!-- Shipping Method Section -->
+                <div>
+                    <h2 class="section-title">Shipping method</h2>
+                    <div class="bg-gray-50 p-4 border border-gray-200 rounded-md text-center">
+                        <p class="text-[13px] text-gray-500">Enter your shipping address to view available shipping
+                            methods.</p>
+                    </div>
+                </div>
+
+                <!-- Payment Section -->
+                <div class="space-y-4">
+                    <div>
+                        <h2 class="section-title mb-1">Payment</h2>
+                        <p class="text-xs text-gray-500">All transactions are secure and encrypted.</p>
+                    </div>
+
+                    <div class="border border-blue-600 bg-blue-50/20 rounded-md overflow-hidden">
+                        <div class="p-4 border-b border-gray-200 flex justify-between items-center">
+                            <div class="flex items-center gap-3">
+                                <input type="radio" checked class="w-4 h-4 text-blue-600">
+                                <span class="text-sm font-medium">Credit card</span>
+                            </div>
+                            <div class="flex gap-1">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
+                                    class="h-4" alt="Visa">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+                                    class="h-4" alt="Mastercard">
+                            </div>
+                        </div>
+
+                        <div class="p-4 space-y-4 bg-gray-50">
+                            <div class="relative">
+                                <input type="text" placeholder="Card number" class="checkout-input pr-10" required>
+                                <i class="ri-lock-line absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <input type="text" placeholder="Expiration date (MM / YY)" class="checkout-input"
+                                    required>
+                                <div class="relative">
+                                    <input type="text" placeholder="Security code" class="checkout-input pr-10"
+                                        required>
+                                    <i
+                                        class="ri-question-line absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                </div>
+                            </div>
+                            <input type="text" placeholder="Name on card" class="checkout-input" required>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" checked
+                                    class="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <span class="text-[13px] text-gray-600">Use shipping address as billing address</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-md transition-all shadow-lg text-sm uppercase tracking-wider">
+                    Pay now
+                </button>
+            </form>
+
+            <!-- Footer Links -->
+            <footer class="mt-12 pt-8 border-t border-gray-100 flex gap-4 text-[11px] text-gray-500">
+                <a href="#" class="hover:underline">Refund policy</a>
+                <a href="#" class="hover:underline">Shipping policy</a>
+                <a href="#" class="hover:underline">Privacy policy</a>
+                <a href="#" class="hover:underline">Terms of service</a>
+            </footer>
+        </div>
+
+        <!-- Right Side: Order Summary (42%) -->
+        <div class="lg:w-[42%] bg-gray-50 px-6 md:px-12 lg:px-16 py-8 md:py-20">
+            <div class="max-w-md mx-auto h-full flex flex-col">
+                <!-- Product List -->
+                <div id="checkout-items" class="space-y-6 mb-8 overflow-y-auto max-h-[450px] pr-2">
+                    <!-- Javascript will populate this -->
+                </div>
+
+                <!-- Discount Code -->
+                <div class="flex gap-3 mb-8">
+                    <input type="text" placeholder="Discount code" class="flex-1 checkout-input">
+                    <button
+                        class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-5 py-2 rounded-md font-medium text-sm transition-colors">Apply</button>
+                </div>
+
+                <!-- Calculations -->
+                <div class="space-y-4 text-[13px] text-gray-600 mb-8 pt-4">
+                    <div class="flex justify-between">
+                        <span>Subtotal</span>
+                        <span class="font-medium text-gray-800" id="checkout-subtotal">₹0.00</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Shipping</span>
+                        <span class="text-gray-400">Enter shipping address</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <div class="flex items-center gap-1.5">
+                            <span>Estimated taxes</span>
+                            <i class="ri-question-line text-sm text-gray-400"></i>
+                        </div>
+                        <span class="font-medium text-gray-800" id="checkout-tax">₹0.00</span>
+                    </div>
+                </div>
+
+                <!-- Total -->
+                <div class="flex justify-between items-center mt-4 pt-6 border-t border-gray-200">
+                    <span class="text-xl font-bold text-gray-800 leading-none">Total</span>
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">INR</span>
+                        <span class="text-2xl font-bold text-gray-900" id="checkout-total">₹0.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS for Checkout Logic -->
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Re-render checkout items from local storage
+            function renderCheckout() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const container = document.getElementById('checkout-items');
+                if (!container) return;
+
+                if (cart.length === 0) {
+                    container.innerHTML = '<p class="text-gray-500 text-sm">Your cart is empty</p>';
+                    return;
+                }
+
+                container.innerHTML = cart.map(item => `
+                    <div class="flex items-center gap-4">
+                        <div class="relative">
+                            <div class="w-16 h-16 bg-white border border-gray-200 rounded-lg flex items-center justify-center p-2 shadow-sm">
+                                <img src="${item.image}" class="max-h-full object-contain" alt="${item.name}">
+                            </div>
+                            <span class="absolute -top-2.5 -right-2.5 w-5 h-5 bg-black text-white text-[11px] flex items-center justify-center rounded-full font-bold ring-2 ring-white">${item.quantity || 1}</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-[13px] font-medium text-gray-800">${item.name}</h3>
+                            <p class="text-[11px] text-gray-400">${item.variant || '28'} / ${item.material || 'Gold'}</p>
+                        </div>
+                        <span class="text-sm font-medium text-gray-800">${item.price}</span>
+                    </div>
+                `).join('');
+
+                // Update totals
+                const subtotal = cart.reduce((sum, item) => {
+                    const price = parseFloat(item.price.replace(/[^\d.]/g, '')) || 0;
+                    return sum + (price * (item.quantity || 1));
+                }, 0);
+
+                const tax = subtotal * 0.18; // Example tax calculation
+                const total = subtotal + tax;
+
+                document.getElementById('checkout-subtotal').textContent = `₹${subtotal.toFixed(2)}`;
+                document.getElementById('checkout-tax').textContent = `₹${tax.toFixed(2)}`;
+                document.getElementById('checkout-total').textContent = `₹${total.toFixed(2)}`;
+            }
+
+            renderCheckout();
+        });
+    </script>
+</body>
+
+</html>
