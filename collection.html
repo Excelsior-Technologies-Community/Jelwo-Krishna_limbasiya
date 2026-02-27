@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <title>Collections - Jelwo Jewelry</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #bb9d89;
+            border-radius: 10px;
+        }
+
+        /* Filter Checkbox Styling */
+        .filter-checkbox:checked {
+            background-color: #a77f66;
+            border-color: #a77f66;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+
+    <!-- Header (Navbar) will be injected or copied -->
+    <header class="w-full font-sans bg-white border-b border-gray-100 sticky top-0 z-50">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between py-4 space-x-4 lg:space-x-8">
+
+                <div class="flex items-center flex-shrink-0">
+                    <a href="index.html">
+                        <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-4-logo.png?v=1744805986&width=352"
+                            class="w-24 md:w-32" alt="Logo" />
+                    </a>
+                    <div
+                        class="hidden lg:block border-l border-gray-200 ml-8 pl-8 text-sm text-gray-500 whitespace-nowrap">
+                        Free UK standard delivery on all orders.
+                    </div>
+                </div>
+
+                <!-- Search Bar (Desktop) -->
+                <div class="relative flex-1 max-w-md hidden md:block">
+                    <input type="text" placeholder="Search product..."
+                        class="w-full py-2 pl-4 pr-10 bg-gray-50 border border-gray-200 rounded-sm focus:outline-none focus:ring-1 focus:ring-amber-700" />
+                    <button class="absolute right-3 top-2.5 text-gray-400">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+
+                <div class="flex items-center space-x-4 md:space-x-6 text-gray-600">
+                    <button class="hidden sm:block hover:text-amber-700 transition-colors">
+                        <i class="fa-regular fa-user text-lg md:text-xl"></i>
+                    </button>
+                    <!-- Search Icon (Mobile) -->
+                    <button id="search-toggle" class="md:hidden hover:text-amber-700 transition-colors">
+                        <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                    </button>
+                    <a href="collection.html" class="hidden sm:block hover:text-amber-700 transition-colors">
+                        <i class="fa-solid fa-table-cells-large text-lg md:text-xl"></i>
+                    </a>
+                    <a href="wishlist.html" class="flex items-center space-x-1 hover:text-amber-700 transition-colors">
+                        <i class="fa-regular fa-heart text-lg md:text-xl"></i>
+                        <span class="text-xs md:text-sm wishlist-count">(0)</span>
+                    </a>
+                    <a href="cart.html" class="flex items-center space-x-1 hover:text-amber-700 transition-colors">
+                        <i class="fa-solid fa-bag-shopping text-lg md:text-xl"></i>
+                        <span class="text-xs md:text-sm cart-count">(0)</span>
+                    </a>
+                    <button id="menu-toggle" class="md:hidden text-gray-800">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Search Bar (Collapsible) -->
+        <div id="mobile-search" class="hidden md:hidden bg-white border-t border-gray-100 px-4 py-3">
+            <div class="relative">
+                <input type="text" placeholder="Search product..."
+                    class="w-full py-2 pl-4 pr-10 bg-gray-50 border border-gray-200 rounded-sm focus:outline-none focus:ring-1 focus:ring-amber-700" />
+                <button class="absolute right-3 top-2.5 text-gray-400">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Sidebar Menu Overlay -->
+        <div id="sidebar-overlay"
+            class="fixed inset-0 bg-black/50 z-[100] transition-opacity duration-300 opacity-0 pointer-events-none">
+        </div>
+        <!-- Mobile Sidebar Menu -->
+        <div id="mobile-sidebar"
+            class="fixed top-0 left-0 bottom-0 w-[300px] bg-white z-[101] transform -translate-x-full transition-transform duration-300 font-sans">
+            <div class="p-6 flex flex-col h-full">
+                <div class="flex items-center justify-between mb-10">
+                    <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-4-logo.png?v=1744805986&width=352"
+                        class="w-24" alt="Logo" />
+                    <button id="close-sidebar" class="text-gray-500 text-2xl">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <nav class="flex-1 overflow-y-auto">
+                    <ul class="space-y-6 text-sm font-semibold uppercase tracking-wider text-gray-800">
+                        <li>
+                            <div class="flex items-center justify-between group">
+                                <a href="index.html" class="py-2 hover:text-[#a77f66] transition-colors">Home</a>
+                                <button class="p-2"><i class="fa-solid fa-chevron-down text-[10px]"></i></button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex items-center justify-between group">
+                                <a href="collection.html" class="py-2 hover:text-[#a77f66] transition-colors">Shop</a>
+                                <button class="p-2"><i class="fa-solid fa-chevron-down text-[10px]"></i></button>
+                            </div>
+                        </li>
+                        <li><a href="#" class="block py-2 hover:text-[#a77f66] transition-colors">Blog</a></li>
+                        <li>
+                            <div class="flex items-center justify-between group">
+                                <a href="#" class="py-2 hover:text-[#a77f66] transition-colors">Pages</a>
+                                <button class="p-2"><i class="fa-solid fa-chevron-down text-[10px]"></i></button>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="mt-10 pt-10 border-t border-gray-100">
+                        <div class="flex items-center space-x-3 text-gray-600 mb-6">
+                            <i class="fas fa-headphones text-[#a77f66]"></i>
+                            <span class="text-xs uppercase tracking-widest font-bold">(220) 123 456 7890</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-gray-600">
+                            <i class="fa-solid fa-house text-[#a77f66]"></i>
+                            <span class="text-xs uppercase tracking-widest font-bold">Free Try at Home</span>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="mt-auto pt-6 border-t border-gray-100 flex justify-center space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-amber-800"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-amber-800"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-amber-800"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-amber-800"><i class="fa-brands fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden md:block border-t border-gray-50">
+            <div
+                class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between uppercase tracking-wide text-[13px] font-semibold text-gray-700">
+
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-headphones text-amber-800"></i>
+                    <span class="whitespace-nowrap">(220) 123 456 7890</span>
+                </div>
+
+                <nav class="relative flex items-center justify-center space-x-6 lg:space-x-10 h-12 bg-white">
+
+                    <div class="group h-full flex items-center">
+                        <a href="index.html"
+                            class="flex items-center hover:text-amber-700 transition-colors font-semibold uppercase tracking-wide text-[13px] border-b-2 border-transparent group-hover:border-amber-700 h-full">
+                            Home <i class="fa-solid fa-chevron-down ml-1.5 text-[10px]"></i>
+                        </a>
+                    </div>
+
+                    <div class="group h-full flex items-center">
+                        <a href="collection.html"
+                            class="flex items-center hover:text-amber-700 transition-colors font-semibold uppercase tracking-wide text-[13px] border-b-2 border-transparent group-hover:border-amber-700 h-full">
+                            Shop <i class="fa-solid fa-chevron-down ml-1.5 text-[10px]"></i>
+                        </a>
+                    </div>
+
+                    <div class="group h-full flex items-center">
+                        <a href="#"
+                            class="flex items-center hover:text-amber-700 transition-colors font-semibold uppercase tracking-wide text-[13px] border-b-2 border-transparent group-hover:border-amber-700 h-full">
+                            Products <i class="fa-solid fa-chevron-down ml-1.5 text-[10px]"></i>
+                        </a>
+                    </div>
+
+
+                    <a href="#"
+                        class="hover:text-amber-700 transition-colors uppercase tracking-wide text-[13px] font-semibold">Blog</a>
+                    <div class="relative group inline-block">
+                        <a href="#"
+                            class="flex items-center hover:text-amber-700 transition-colors uppercase tracking-wide text-[13px] font-semibold border-b-2 border-transparent hover:border-amber-700 pb-1">
+                            Pages
+                            <i class="fa-solid fa-chevron-down ml-1.5 text-[10px]"></i>
+                        </a>
+                    </div>
+
+                </nav>
+                <div class="flex items-center space-x-2 text-gray-700">
+                    <i class="fa-solid fa-house text-amber-800"></i>
+                    <span class="whitespace-nowrap">Free Try at Home</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title / Breadcrumb -->
+    <div class="bg-gray-50 py-12 md:py-20 text-center">
+        <h1 class="text-4xl md:text-5xl font-serif text-gray-800 mb-4 animate-fade-in">Our Collections</h1>
+        <nav class="text-xs uppercase tracking-widest text-gray-400">
+            <a href="index.html" class="hover:text-[#a77f66] transition-colors">Home</a> /
+            <span class="text-gray-800">Collections</span>
+        </nav>
+    </div>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="flex flex-col lg:flex-row gap-8">
+
+            <!-- Left Sidebar Filtering -->
+            <aside class="w-full lg:w-1/4 space-y-8">
+                <!-- Mobile Filter Toggle (Hidden on LG) -->
+                <div class="lg:hidden flex justify-between items-center border-b pb-4 mb-4">
+                    <button id="mobile-filter-trigger"
+                        class="flex items-center gap-2 font-bold text-sm uppercase tracking-widest">
+                        <i class="ri-filter-3-line"></i> Filters
+                    </button>
+                    <span id="product-count-mobile" class="text-xs text-gray-500">12 Products</span>
+                </div>
+
+                <div id="filter-sidebar" class="hidden lg:block space-y-8">
+                    <!-- Category Filter -->
+                    <div>
+                        <h3 class="text-sm font-bold uppercase tracking-widest mb-4 pb-2 border-b">Category</h3>
+                        <ul class="space-y-3">
+                            <li>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="filter-checkbox w-4 h-4 rounded border-gray-300 text-[#a77f66] focus:ring-[#a77f66]"
+                                        value="Rings">
+                                    <span
+                                        class="text-sm text-gray-600 group-hover:text-[#a77f66] transition-colors">Rings</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="filter-checkbox w-4 h-4 rounded border-gray-300 text-[#a77f66] focus:ring-[#a77f66]"
+                                        value="Earrings">
+                                    <span
+                                        class="text-sm text-gray-600 group-hover:text-[#a77f66] transition-colors">Earrings</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="filter-checkbox w-4 h-4 rounded border-gray-300 text-[#a77f66] focus:ring-[#a77f66]"
+                                        value="Necklace">
+                                    <span
+                                        class="text-sm text-gray-600 group-hover:text-[#a77f66] transition-colors">Necklace</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="filter-checkbox w-4 h-4 rounded border-gray-300 text-[#a77f66] focus:ring-[#a77f66]"
+                                        value="Bracelets">
+                                    <span
+                                        class="text-sm text-gray-600 group-hover:text-[#a77f66] transition-colors">Bracelets</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Availability Filter -->
+                    <div>
+                        <h3 class="text-sm font-bold uppercase tracking-widest mb-4 pb-2 border-b">Availability</h3>
+                        <ul class="space-y-3">
+                            <li>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="filter-checkbox w-4 h-4 rounded border-gray-300 text-[#a77f66] focus:ring-[#a77f66]"
+                                        value="In Stock">
+                                    <span class="text-sm text-gray-600 group-hover:text-[#a77f66] transition-colors">In
+                                        Stock (9)</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="filter-checkbox w-4 h-4 rounded border-gray-300 text-[#a77f66] focus:ring-[#a77f66]"
+                                        value="Out of Stock">
+                                    <span class="text-sm text-gray-600 group-hover:text-[#a77f66] transition-colors">Out
+                                        of Stock (3)</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Price Range -->
+                    <div>
+                        <h3 class="text-sm font-bold uppercase tracking-widest mb-4 pb-2 border-b">Price</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <div class="flex-1 relative">
+                                    <span
+                                        class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">Rs.</span>
+                                    <input type="number" placeholder="From"
+                                        class="w-full pl-10 pr-4 py-2 text-sm border rounded-sm outline-none focus:ring-1 focus:ring-[#a77f66]">
+                                </div>
+                                <div class="flex-1 relative">
+                                    <span
+                                        class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">Rs.</span>
+                                    <input type="number" placeholder="To"
+                                        class="w-full pl-10 pr-4 py-2 text-sm border rounded-sm outline-none focus:ring-1 focus:ring-[#a77f66]">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Material Filter -->
+                    <div>
+                        <h3 class="text-sm font-bold uppercase tracking-widest mb-4 pb-2 border-b">Material</h3>
+                        <ul class="space-y-3">
+                            <li>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="filter-checkbox w-4 h-4 rounded border-gray-300 text-[#a77f66] focus:ring-[#a77f66]"
+                                        value="Gold">
+                                    <span
+                                        class="text-sm text-gray-600 group-hover:text-[#a77f66] transition-colors">Gold</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="filter-checkbox w-4 h-4 rounded border-gray-300 text-[#a77f66] focus:ring-[#a77f66]"
+                                        value="Diamond">
+                                    <span
+                                        class="text-sm text-gray-600 group-hover:text-[#a77f66] transition-colors">Diamond</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="filter-checkbox w-4 h-4 rounded border-gray-300 text-[#a77f66] focus:ring-[#a77f66]"
+                                        value="Platinum">
+                                    <span
+                                        class="text-sm text-gray-600 group-hover:text-[#a77f66] transition-colors">Platinum</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Product Display Area -->
+            <div class="w-full lg:w-3/4">
+                <!-- SortingHeader -->
+                <div
+                    class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8 bg-gray-50 p-4 rounded-sm">
+                    <div class="text-sm text-gray-500 font-medium">
+                        Showing <span id="current-range">1-12</span> of <span id="total-results">12</span> results
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <label class="text-xs uppercase tracking-widest text-gray-400 font-bold">Sort by:</label>
+                        <select id="sort-by"
+                            class="bg-transparent border-none text-sm font-bold text-gray-700 outline-none cursor-pointer">
+                            <option value="featured">Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="newest">Newest</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div id="collection-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Products will be dynamically rendered here -->
+                </div>
+
+                <!-- Pagination (Simulated) -->
+                <div class="mt-12 flex justify-center items-center gap-4">
+                    <button
+                        class="w-10 h-10 border flex items-center justify-center rounded-full hover:bg-[#a77f66] hover:text-white transition-colors"><i
+                            class="ri-arrow-left-s-line"></i></button>
+                    <span
+                        class="w-10 h-10 bg-[#a77f66] text-white flex items-center justify-center rounded-full">1</span>
+                    <button
+                        class="w-10 h-10 border flex items-center justify-center rounded-full hover:bg-[#a77f66] hover:text-white transition-colors"><i
+                            class="ri-arrow-right-s-line"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be injected or copied -->
+    <footer class="bg-[#FCF8F4] border-t border-gray-100 pt-16 pb-8 font-sans">
+        <div class="container mx-auto px-4 sm:px-10 md:px-20 lg:px-24">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 mb-16">
+
+                <div class="space-y-6">
+                    <a href="/" class="block">
+                        <div class="flex items-center gap-1">
+                            <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-4-logo.png?v=1744805986&width=352"
+                                class="w-24 md:w-32" alt="Logo" />
+                        </div>
+                    </a>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#a77f66] mt-1"><i class="ri-map-pin-line"></i></span>
+                            <span>55 East 10th street, new york,<br>ny 10003, united states</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-[#a77f66]"><i class="ri-phone-line"></i></span>
+                            <a href="tel:+2201234567890" class="hover:text-[#a77f66] transition-colors">+ (220) 123 456
+                                7890</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-[#a77f66]"><i class="ri-mail-line"></i></span>
+                            <a href="mailto:demo123546@gmail.com"
+                                class="hover:text-[#a77f66] transition-colors">demo123546@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="text-[16px] font-semibold text-[#a77f66] mb-6">Information</h2>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-[#a77f66]">About us</a></li>
+                        <li><a href="#" class="hover:text-[#a77f66]">Contact us</a></li>
+                        <li><a href="#" class="hover:text-[#a77f66]">Faq's</a></li>
+                        <li><a href="#" class="hover:text-[#a77f66]">News</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="text-[16px] font-semibold text-[#a77f66] mb-6">Privacy & terms</h2>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-[#a77f66]">Privacy policy</a></li>
+                        <li><a href="#" class="hover:text-[#a77f66]">Refund policy</a></li>
+                        <li><a href="#" class="hover:text-[#a77f66]">Shipping & return</a></li>
+                        <li><a href="#" class="hover:text-[#a77f66]">Terms & condition</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="text-[16px] font-semibold text-[#a77f66] mb-6">Category</h2>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-[#a77f66]">Rings</a></li>
+                        <li><a href="#" class="hover:text-[#a77f66]">Earring</a></li>
+                        <li><a href="#" class="hover:text-[#a77f66]">Pendant</a></li>
+                        <li><a href="#" class="hover:text-[#a77f66]">Necklaces</a></li>
+                        <li><a href="#" class="hover:text-[#a77f66]">Bracelets</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="text-[16px] font-semibold text-[#a77f66] mb-6">Visit store</h2>
+                    <div class="space-y-3 text-sm text-gray-500">
+                        <p>Mon - sat : 10am - 11pm</p>
+                        <p>Sun : 10am - 4pm</p>
+                        <p>7 Days a week</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-8 py-12 border-t border-gray-200">
+                <div class="flex space-x-3">
+                    <a href="#"
+                        class="w-11 h-11 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:text-[#a77f66] transition-all"><i
+                            class="ri-facebook-fill"></i></a>
+                    <a href="#"
+                        class="w-11 h-11 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:text-[#a77f66] transition-all"><i
+                            class="ri-twitter-x-line"></i></a>
+                    <a href="#"
+                        class="w-11 h-11 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:text-[#a77f66] transition-all"><i
+                            class="ri-instagram-line"></i></a>
+                    <a href="#"
+                        class="w-11 h-11 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:text-[#a77f66] transition-all"><i
+                            class="ri-pinterest-line"></i></a>
+                    <a href="#"
+                        class="w-11 h-11 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:text-[#a77f66] transition-all"><i
+                            class="ri-youtube-line"></i></a>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <p class="text-[#a77f66] font-medium text-lg">Subscribe and get 15% discount.</p>
+                    <div
+                        class="relative flex items-center bg-[#F4F1EE] rounded-full p-1 border border-gray-200 w-full md:w-[450px]">
+                        <input type="email" placeholder="Enter your email"
+                            class="bg-transparent w-full pl-6 pr-4 py-3 outline-none text-gray-600 text-sm">
+                        <button
+                            class="bg-[#a77f66] text-white px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-[#8e6b56] transition-colors">
+                            SUBSCRIBE
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>Copyright © 2026 by spacingtech</p>
+
+                <div class="flex items-center gap-2 mt-4 md:mt-0">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa"
+                        class="h-4 grayscale hover:grayscale-0 cursor-pointer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard"
+                        class="h-6 grayscale hover:grayscale-0 cursor-pointer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="Paypal"
+                        class="h-4 grayscale hover:grayscale-0 cursor-pointer">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- popup model -->
+    <div id="newsletter-modal"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+
+        <div
+            class="relative w-full max-w-lg overflow-hidden rounded-xl bg-white shadow-2xl transform scale-95 transition-transform duration-300">
+
+            <button onclick="closeModal()"
+                class="absolute right-4 top-4 z-10 text-gray-400 hover:text-black transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div class="px-6 md:px-8 pt-10 pb-6 text-center">
+                <span class="block text-xs font-medium uppercase tracking-[0.2em] text-gray-500 mb-3">
+                    Don't miss a thing
+                </span>
+
+                <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 leading-tight mb-8">
+                    Join our newsletter and get 10% off your first order
+                </h2>
+
+                <form action="#" class="space-y-4">
+                    <div class="flex flex-col sm:flex-row gap-0 border border-gray-300 rounded-lg overflow-hidden">
+                        <input type="email" placeholder="Enter your email"
+                            class="flex-1 px-5 py-3 text-gray-700 focus:outline-none" required>
+                        <button type="submit"
+                            class="bg-[#b28a6f] px-8 py-3 text-sm font-bold text-white uppercase tracking-widest hover:bg-[#9a765d] transition-colors">
+                            Subscribe
+                        </button>
+                    </div>
+
+                    <div class="flex items-center justify-center gap-2 pt-2">
+                        <input type="checkbox" id="dont-show"
+                            class="w-4 h-4 rounded border-gray-300 text-[#b28a6f] focus:ring-[#b28a6f]">
+                        <label for="dont-show" class="text-sm text-gray-500 cursor-pointer select-none">
+                            Don't show this popup again
+                        </label>
+                    </div>
+                </form>
+            </div>
+
+            <div class="w-full h-56 overflow-hidden">
+                <img src="https://jelwo.myshopify.com/cdn/shop/files/jewelry-4-popup.jpg" alt="Jewelry Banner"
+                    class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script src="collection-filter.js"></script>
+</body>
+
+</html>
