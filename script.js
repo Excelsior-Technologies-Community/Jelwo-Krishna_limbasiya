@@ -510,7 +510,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         container.innerHTML = `
-            <div class="bg-white border border-gray-100 rounded-lg overflow-hidden">
+            <!-- Desktop Table View -->
+            <div class="hidden md:block bg-white border border-gray-100 rounded-lg overflow-hidden">
                 <table class="w-full text-left">
                     <thead class="bg-gray-50 text-[11px] uppercase tracking-widest text-gray-400">
                         <tr>
@@ -551,6 +552,39 @@ document.addEventListener('DOMContentLoaded', function () {
         }).join('')}
                     </tbody>
                 </table>
+            </div>
+
+            <!-- Mobile Card View -->
+            <div class="md:hidden space-y-4">
+                ${cart.map(item => {
+            const priceNum = parseFloat(item.price.replace(/[^\d.]/g, '')) || 0;
+            const total = priceNum * (item.quantity || 1);
+            return `
+                        <div class="bg-white border border-gray-100 rounded-lg p-4">
+                            <div class="flex gap-4">
+                                <img src="${item.image}" class="w-24 h-24 object-contain bg-gray-50 rounded" alt="${item.name}">
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-start">
+                                        <h3 class="font-bold text-gray-800 text-sm">${item.name}</h3>
+                                        <button onclick="removeFromCart('${item.id}')" class="text-gray-400 hover:text-red-500">
+                                            <i class="ri-delete-bin-line"></i>
+                                        </button>
+                                    </div>
+                                    <p class="text-sm text-[#a77f66] font-bold mt-1">${item.price}</p>
+                                    
+                                    <div class="flex items-center justify-between mt-4">
+                                        <div class="flex items-center border border-gray-200 rounded">
+                                            <button onclick="updateQuantity('${item.id}', -1)" class="px-2 py-1 text-gray-400">-</button>
+                                            <span class="px-3 py-1 text-xs font-bold border-x border-gray-200">${item.quantity || 1}</span>
+                                            <button onclick="updateQuantity('${item.id}', 1)" class="px-2 py-1 text-gray-400">+</button>
+                                        </div>
+                                        <p class="text-sm font-bold text-gray-800">Total: Rs. ${total.toFixed(2)}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+        }).join('')}
             </div>
         `;
         updateCartSummary();
